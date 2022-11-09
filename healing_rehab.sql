@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2022 at 10:21 PM
+-- Generation Time: Nov 09, 2022 at 03:42 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -104,9 +104,16 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password_hash` int(72) NOT NULL,
+  `password_hash` varchar(72) NOT NULL,
   `role` enum('employee','admin') NOT NULL DEFAULT 'employee'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
+(4, 'admin1234', '$2y$10$.pSt9Wc0QWg/1WeM.SHMjOBRlqZpZvVOS7RIXlR.JVUrjg3/0QLO6', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -191,7 +198,7 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
