@@ -14,9 +14,9 @@ class User extends \Sys_Dev_Project\core\Controller{
 				$_SESSION['role'] = $user->role;
 
 				if($_SESSION['role'] == 'admin'){
-					header('location:/Product/indexAdmin?message=You have been successfully logged in');
+					header('location:/Item/indexAdmin');
 				}else{
-					header('location:/Product/indexEmployee?message=You have been successfully logged in');
+					header('location:/Item/indexEmployee?message=You have been successfully logged in');
 				}
 			}else{
 				header('location:/User/index?error=Incorrect username or password');
