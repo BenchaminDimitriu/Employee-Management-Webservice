@@ -8,7 +8,7 @@ namespace Sys_Dev_Project\core;
     		   
 class App{
 
-	private $controller = 'Main';
+	private $controller = 'User';
 	private $method = 'index';
 
 
