@@ -49,3 +49,5 @@ class User extends \Sys_Dev_Project\core\Controller{
 		 }
 	 }
 }
+
+?>
