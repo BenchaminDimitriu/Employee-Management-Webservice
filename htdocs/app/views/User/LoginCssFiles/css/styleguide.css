@@ -1,0 +1,22 @@
+:root { 
+  --black: #000000;
+  --tamarillo: #a20e0e;
+  --white: #ffffff;
+ 
+  --font-size-l: 20px;
+  --font-size-m: 16px;
+  --font-size-xl: 30px;
+  --font-size-xxl: 50px;
+ 
+  --font-family-font_awesome_6_free-regular: "Font Awesome 6 Free-Regular", Helvetica;
+  --font-family-rounded_mplus_1c-medium: "Rounded Mplus 1c-Medium", Helvetica;
+  --font-family-rounded_mplus_1c-regular: "Rounded Mplus 1c-Regular", Helvetica;
+  --font-family-rounded_mplus_1c_bold-bold: "Rounded Mplus 1c Bold-Bold", Helvetica;
+}
+.roundedmplus1c-regular-normal-black-16px {
+  color: var(--black);
+  font-family: var(--font-family-rounded_mplus_1c-regular);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 400;
+}
