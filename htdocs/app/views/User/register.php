@@ -1,4 +1,4 @@
-u<!doctype html>
+<!doctype html>
 <html lang="en">
 	
 	<head>

@@ -1,8 +1,8 @@
 <?php
-namespace Sys_Dev_Project\filters;
+namespace app\filters;
 
 #[\Attribute]
-class Admin extends \Sys_Dev_Project\core\AccessFilter{
+class Admin extends \app\core\AccessFilter{
 	
 	public function run(){
 		if($_SESSION['role'] != 'admin'){

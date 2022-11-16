@@ -1,9 +1,9 @@
 <?php
-namespace Sys_Dev_Project\controllers;
+namespace app\controllers;
 
-class Category extends \Sys_Dev_Project\core\Controller{
+class Category extends \app\core\Controller{
 
-	#[\Sys_Dev_Project\filters\Login]
+	#[\app\filters\Login]
  	public function add(){
 		if(isset($_POST['action'])){
 			

@@ -1,9 +1,9 @@
 <?php
-namespace Sys_Dev_Project\core;
+namespace app\core;
 
 class Controller{
 	protected function view($name, $data = []){	
-		include('Sys_Dev_Project\\views\\' . $name . '.php');
+		include('app\\views\\' . $name . '.php');
 	}
 
 	public function saveFile($file){

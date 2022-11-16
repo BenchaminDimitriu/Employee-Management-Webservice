@@ -1,12 +1,12 @@
 <?php
-namespace Sys_Dev_Project\controllers;
+namespace app\controllers;
 
-class User extends \Sys_Dev_Project\core\Controller{
+class User extends \app\core\Controller{
 
 	public function index(){
 		//Add difference between both admin and button
 		if(isset($_POST['action'])){
-			$user = new \Sys_Dev_Project\models\User();
+			$user = new \app\models\User();
 			$user = $user->get($_POST['username']);
 			if(password_verify($_POST['password'], $user->password_hash)){
 				$_SESSION['username'] = $user->username;
@@ -30,7 +30,7 @@ class User extends \Sys_Dev_Project\core\Controller{
  	 public function register(){
 		 if(isset($_POST['action'])){
 			if($_POST['password'] == $_POST['password_confirmation']){
-			 		$user = new \Sys_Dev_Project\models\User();
+			 		$user = new \app\models\User();
 
 			 		if($user->get($_POST['username'])){
 			 			header('location: User/register?error=The Username already exists, Choose another');

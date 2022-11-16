@@ -1,13 +1,13 @@
 <?php
-namespace Sys_Dev_Project\models;
+namespace app\models;
 
-class Item extends \Sys_Dev_Project\core\Models{
+class Item extends \app\core\Models{
 
 	public function getAll(){
 		$SQL = "SELECT * FROM category";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
-		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'Sys_Dev_Project\models\Category');
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetchAll();
 	}
 

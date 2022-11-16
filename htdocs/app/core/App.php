@@ -1,5 +1,5 @@
 <?php
-namespace Sys_Dev_Project\core;
+namespace app\core;
 
 /*Rounting all request to the appropriate controller method
   For example: localhost/person/add -> run the add method in the personController class
@@ -20,12 +20,12 @@ class App{
 		//use the first part to determine the class to load
 		if(isset($url[0]))
 		{
-				if(file_exists('Sys_Dev_Project/controllers/' .$url[0] . '.php')){
+				if(file_exists('app/controllers/' .$url[0] . '.php')){
 					$this->controller = $url[0]; //$this refers to the current object
 				}
 				unset($url[0]);
 		} 
-		$this->controller = 'Sys_Dev_Project\\controllers\\' . $this->controller; //provide a fully qualified classname
+		$this->controller = 'app\\controllers\\' . $this->controller; //provide a fully qualified classname
 		$this->controller = new $this->controller; 
 		//use the second part to determine the method to run 
 

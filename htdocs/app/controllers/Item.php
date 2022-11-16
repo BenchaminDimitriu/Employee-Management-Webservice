@@ -1,17 +1,17 @@
 <?php
-namespace Sys_Dev_Project\controllers;
+namespace app\controllers;
 
-class Item extends \Sys_Dev_Project\core\Controller{
+class Item extends \app\core\Controller{
 
 	public function indexAdmin(){
 		$this->view('/Item/indexAdmin');
 	}
 
-	#[\Sys_Dev_Project\filters\Login]
+	#[\app\filters\Login]
  	public function add(){
 		if(isset($_POST['action'])){
 			
-			$item = new \Sys_Dev_Project\models\Item();
+			$item = new \app\models\Item();
 			$item->item_name = $_POST['name'];
 			$item->item_qty = $_POST['qty'];
 			$item->item_Pprice = $_POST['Pprice'];

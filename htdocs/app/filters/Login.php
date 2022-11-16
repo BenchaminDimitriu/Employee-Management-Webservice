@@ -1,8 +1,8 @@
 <?php
-namespace Sys_Dev_Project\filters;
+namespace app\filters;
 
 #[\Attribute]
-class Login extends \Sys_Dev_Project\core\AccessFilter{
+class Login extends \app\core\AccessFilter{
 
 	public function execute(){
 		if(!isset($_SESSION['user_id'])){

@@ -1,5 +1,5 @@
 <?php
-namespace Sys_Dev_Project\core;
+namespace app\core;
 
 class Models{
 	protected static $_connection;

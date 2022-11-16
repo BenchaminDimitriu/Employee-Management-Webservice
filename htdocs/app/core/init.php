@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require('Sys_Dev_Project\core\autoload.php');
+	require('app\core\autoload.php');
 
 	if(isset($_GET['lang'])){ 
 		$lang = $_GET['lang'];

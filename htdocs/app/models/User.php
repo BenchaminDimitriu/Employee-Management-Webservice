@@ -1,7 +1,7 @@
 <?php
-namespace Sys_Dev_Project\models;
+namespace app\models;
 
-class User extends \Sys_Dev_Project\core\Models{
+class User extends \app\core\Models{
 
 	//needs to connect to the DB - through the Model base class
 
@@ -18,7 +18,7 @@ class User extends \Sys_Dev_Project\core\Models{
 		$SQL = "SELECT * FROM user WHERE username LIKE :username";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['username'=>$username]);//pass any data for the query
-		$STMT->setFetchMode(\PDO::FETCH_CLASS, "Sys_Dev_Project\\models\\User");
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\User");
 		return $STMT->fetch();
 	}
 
