@@ -6,9 +6,9 @@
     <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
     <meta name="viewport" content="width=2474, maximum-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="frame-529.css" />
-    <link rel="stylesheet" type="text/css" href="styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="globals.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Employee/frame-529.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Employee/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Employee/globals.css" />
   </head>
   <body style="margin: 0; background: #ffffff">
     <input type="hidden" id="anPageName" name="page" value="frame-529" />
@@ -40,7 +40,7 @@
                 <span><span class="roundedmplus1c-regular-normal-white-16px">Employees</span> </span>
               </div>
             </div>
-            <img class="logo" src="img/logo-1@2x.png" alt="Logo" />
+            <img class="logo" src="/css/Employee/img/logo-1@2x.png" alt="Logo" />
             <div class="profile-button">
               <div class="power-off-logo valign-text-middle fontawesome6free-regular-normal-white-16px">
                 <span><span class="fontawesome6free-regular-normal-white-16px">user</span> </span>
@@ -71,19 +71,19 @@
             <div class="add-new-employee valign-text-middle roundedmplus1c-regular-normal-black-20px">
               <span><span class="roundedmplus1c-regular-normal-black-20px">Add New Employee</span> </span>
             </div>
-            <img class="line-3" src="img/line-3-1@2x.png" alt="Line 3" />
+            <img class="line-3" src="/css/Employee/img/line-3-1@2x.png" alt="Line 3" />
             <div class="first-name valign-text-middle roundedmplus1c-regular-normal-black-18px">
               <span><span class="roundedmplus1c-regular-normal-black-18px">First Name</span> </span>
             </div>
             <div class="home-address valign-text-middle roundedmplus1c-regular-normal-black-18px">
               <span><span class="roundedmplus1c-regular-normal-black-18px">Home Address</span> </span>
             </div>
-            <img class="line-4" src="img/line-4-1@2x.png" alt="Line 4" />
+            <img class="line-4" src="/css/Employee/img/line-4-1@2x.png" alt="Line 4" />
             <div class="last-name valign-text-middle roundedmplus1c-regular-normal-black-18px">
               <span><span class="roundedmplus1c-regular-normal-black-18px">Last Name</span> </span>
             </div>
-            <img class="line-8" src="img/line-8-1@2x.png" alt="Line 8" />
-            <img class="line-5" src="img/line-5-1@2x.png" alt="Line 5" />
+            <img class="line-8" src="/css/Employee/img/line-8-1@2x.png" alt="Line 8" />
+            <img class="line-5" src="/css/Employee/img/line-5-1@2x.png" alt="Line 5" />
             <div class="cancel-button">
               <div class="cancel valign-text-middle roundedmplus1c-medium-white-16px">
                 <span><span class="roundedmplus1c-medium-white-16px">Cancel</span> </span>
