@@ -9,5 +9,8 @@ class User extends \app\core\Controller{
 
 		$this->view('Employee/index', $employees);
 	}
+
+	public function index(){
+		$this->view('/Employee/add');
+	}
 }
-?>
