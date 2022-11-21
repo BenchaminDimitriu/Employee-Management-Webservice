@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers;
 
-class User extends \app\core\Controller{
+class Employee extends \app\core\Controller{
 
 	public function index(){
 		$employee = new \app\models\Employee();
@@ -10,7 +10,7 @@ class User extends \app\core\Controller{
 		$this->view('Employee/index', $employees);
 	}
 
-	public function index(){
+	public function add(){
 		$this->view('/Employee/add');
 	}
 }
