@@ -8,20 +8,24 @@ class User extends \app\core\Controller{
 		if(isset($_POST['action'])){
 			$user = new \app\models\User();
 			$user = $user->get($_POST['username']);
-			if(password_verify($_POST['password'], $user->password_hash)){
-				$_SESSION['username'] = $user->username;
-				$_SESSION['user_id'] = $user->user_id;
-				$_SESSION['role'] = $user->role;
 
-				if($_SESSION['role'] == 'admin'){
-					header('location:/Item/indexAdmin');
+			if($_POST['password'] == "" || $_POST['username'] == ""){
+				 	header('location:/User/index?error=Please enter username and password');
+			} else{
+				if(password_verify($_POST['password'], $user->password_hash)){
+			 		$_SESSION['username'] = $user->username;
+			 		$_SESSION['user_id'] = $user->user_id;
+			 		$_SESSION['role'] = $user->role;
+
+					if($_SESSION['role'] == 'admin'){						
+						header('location:/Item/indexAdmin');
+					}else{
+						header('location:/Item/indexAdmin');
+					}
 				}else{
-					header('location:/Item/indexEmployee?message=You have been successfully logged in');
+					header('location:/User/index?error=Incorrect username or password');
 				}
-			}else{
-				header('location:/User/index?error=Incorrect username or password');
 			}
-
 		}else{
 			$this->view('User/index');
 		}
@@ -49,5 +53,4 @@ class User extends \app\core\Controller{
 		 }
 	 }
 }
-
 ?>
