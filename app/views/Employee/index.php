@@ -15,59 +15,7 @@
     <div class="container-center-horizontal">
       <div class="frame-530 screen">
         <div class="employee-list">
-          <div class="overlap-group1">
-            <div class="item-inventory-page-button">
-              <div class="power-off-logo valign-text-middle fontawesome6free-regular-normal-white-16px">
-                <span><span class="fontawesome6free-regular-normal-white-16px">boxes-stacked</span> </span>
-              </div>
-              <div class="items-1 valign-text-middle roundedmplus1c-regular-normal-white-16px">
-                <span><span class="roundedmplus1c-regular-normal-white-16px">Items</span> </span>
-              </div>
-            </div>
-            <div class="category-button">
-              <div class="power-off-logo valign-text-middle fontawesome6free-regular-normal-white-16px">
-                <span><span class="fontawesome6free-regular-normal-white-16px">bookmark</span> </span>
-              </div>
-              <div class="items valign-text-middle roundedmplus1c-regular-normal-white-16px">
-                <span><span class="roundedmplus1c-regular-normal-white-16px">Category</span> </span>
-              </div>
-            </div>
-            <div class="employees">
-              <div class="power-off-logo-1 valign-text-middle fontawesome6free-regular-normal-white-16px">
-                <span><span class="fontawesome6free-regular-normal-white-16px">people-arrows</span> </span>
-              </div>
-              <div class="items-2 valign-text-middle roundedmplus1c-regular-normal-white-16px">
-                <span><span class="roundedmplus1c-regular-normal-white-16px">Employees</span> </span>
-              </div>
-            </div>
-            </css/ViewEmployee/ class="logo" src="/css/ViewEmployee/img/logo-1@2x.png" alt="Logo" />
-            <div class="profile-button">
-              <div class="power-off-logo valign-text-middle fontawesome6free-regular-normal-white-16px">
-                <span><span class="fontawesome6free-regular-normal-white-16px">user</span> </span>
-              </div>
-              <div class="items valign-text-middle roundedmplus1c-regular-normal-white-16px">
-                <span><span class="roundedmplus1c-regular-normal-white-16px">Profile</span> </span>
-              </div>
-            </div>
-            <div class="notification">
-              <div class="power-off-logo valign-text-middle fontawesome6free-regular-normal-white-16px">
-                <span><span class="fontawesome6free-regular-normal-white-16px">bell</span> </span>
-              </div>
-              <div class="items valign-text-middle roundedmplus1c-regular-normal-white-16px">
-                <span><span class="roundedmplus1c-regular-normal-white-16px">Message</span> </span>
-              </div>
-            </div>
-            <div class="logout-button">
-              <div class="power-off-logo valign-text-middle fontawesome6free-regular-normal-white-16px">
-                <span><span class="fontawesome6free-regular-normal-white-16px">power-off</span> </span>
-              </div>
-              <div class="items valign-text-middle roundedmplus1c-regular-normal-white-16px">
-                <span><span class="roundedmplus1c-regular-normal-white-16px">Logout</span> </span>
-              </div>
-            </div>
-          </div>
           <div class="overlap-group2">
-            <div class="light-background"></div>
             <div class="table-header">
               <div class="head-6">
                 <div class="item-name manrope-semi-bold-black-16px">
