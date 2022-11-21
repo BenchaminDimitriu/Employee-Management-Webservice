@@ -25,19 +25,11 @@
   height: 78px;
   padding: 13px 0;
   width: 106px;
+  transition: color 0.2s;
 }
 
 .itemInventory:hover{
   color: rgba(163, 5, 5, 1);
-}
-
-.itemIcon{
-  height: 25px;
-  color: white;
-  line-height: normal;
-  margin-top: 6px;
-  text-align: center;
-  width: 36px;
 }
 
 .itemText {
@@ -57,27 +49,18 @@
   margin-left: 20px;
   padding: 13px 0;
   width: 106px;
+  transition: color 0.2s;
 }
 
 .category:hover{
-  background-color: rgba(163, 5, 5, 1);
-  color: 
-}
-
-.categoryIcon{
-  height: 25px;
-  color:white;
-  line-height: normal;
-  margin-top: 6px;
-  text-align: center;
-  width: 36px;
+  color: rgba(163, 5, 5, 1);
 }
 
 .categoryText {
   height: 24px;
   letter-spacing: 0;
   line-height: normal;
-  margin-top: 8px;
+  margin-top: 18px;
   text-align: center;
   width: 70px;
 }
@@ -92,26 +75,17 @@
   margin-left: 23px;
   padding: 13px;
   width: 106px;
+  transition: color 0.2s;
 }
 
 .employees:hover{
   color: rgba(163, 5, 5, 1);
 }
 
-.employeeIcon {
-  align-self: center;
-  height: 25px;
-  color:white;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-top: 3px;
-  text-align: center;
-  width: 36px;
-}
-
 .employeeText {
   height: 24px;
-  letter-spacing: 0;
+  text-decoration: none;
+  margin-top: 19px;
   line-height: normal;
   text-align: center;
   width: 79px;
@@ -140,17 +114,6 @@
 
 .profile:hover{
   color: rgba(163, 5, 5, 1);
-}
-
-.profileIcon {
-  align-self: center;
-  height: 25px;
-  color:white;
-  letter-spacing: 0;
-  line-height: normal;
-  margin-top: 3px;
-  text-align: center;
-  width: 36px;
 }
 
 .profileText {
