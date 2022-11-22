@@ -2,75 +2,52 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!--Font-Awesome CSS-->
+   <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Item/view.css" />
+
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/Item/item.css" />
-    <link rel="stylesheet" type="text/css" href="/css/Item/styleguide.css" />
-    <link rel="stylesheet" type="text/css" href="/css/Item/global.css" />
   </head>
 
   <body>
-    <div class="item-page-admin">
-      <div class="overlap-group9">
-        
-        <div class="itemInventory">  
+    <div class='navbar'> 
           <a  href ="/Item/indexAdmin">
-            <div class="itemText valign-text-middle roundedmplus1c-regular-normal-white-16px">
               <i class="fa-solid fa-boxes-stacked"></i>
               <span>Items</span>
-            </div>
           </a>
-        </div>
 
-        <div class="category">
           <a  href ="/Category/index">
-            <div class="categoryText valign-text-middle roundedmplus1c-regular-normal-white-16px">
               <span><i class="fa-solid fa-bookmark"></i></span>
               <span>Category</span>
-            </div>
           </a>
-        </div>
 
-        <div class="employees">
           <a  href ="/Employee/index">
-            <div class="employeeText valign-text-middle roundedmplus1c-regular-normal-white-16px">
               <span><i class="fa-solid fa-users"></i></span>
               <span>Employees</span>
-            </div>
           </a>
-        </div>
 
         <img class="logo" src="/images/Item/logo-1@2x.png" alt="Logo" />
 
-        <div class="profile">
           <a  href ="/Profile/edit">
-            <div class="profileText valign-text-middle roundedmplus1c-regular-normal-white-16px">
-              <span><i class="fa fa-user"></i></span>
+              <i class="fa fa-user"></i>
               <span>Profile</span>
-            </div>
           </a>
-        </div>
-
-        <div class="notification">
-          <div class="notifText valign-text-middle roundedmplus1c-regular-normal-white-16px">
+          
+          <a  href ="">
             <span><i class="fa fa-bell"></i></span>
-            <span>Message</span>
-          </div>
-        </div>
+            <span>Notification</span>
+          </a>
 
-        <div class="logout">
           <a  href ="/User/logout">
-            <div class="logoutText valign-text-middle roundedmplus1c-regular-normal-white-16px">
               <span><i class="fa fa-power-off"></i></span>
               <span>Logout</span>
-            </div>
           </a>
-        </div>
-        
-      </div>
-    </div>
+        </div> 
+  
   </body>
 </html>
