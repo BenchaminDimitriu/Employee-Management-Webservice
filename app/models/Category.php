@@ -1,10 +1,16 @@
 <?php
 namespace app\models;
 
-class Item extends \app\core\Models{
-
+class Category extends \app\core\Models{
+	
+	public function insert(){
+		$SQL = "INSERT INTO category (name) VALUES (:name)";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['name'=>$this->name]);
+	}
+	
 	public function getAll(){
-		$SQL = "SELECT * FROM category";
+		$SQL = "SELECT category.*, item.qty*item.Sprice as totalP, count(1) as totalS FROM category JOIN item ON item.category_id=category.category_id GROUP BY category_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
@@ -19,17 +25,14 @@ class Item extends \app\core\Models{
 		return $STMT->fetch();
 	}
 
-	public function insert(){
-		$SQL = "INSERT INTO category(category_id,category_name,item_id) VALUES (:category_id,:category_name,:item_id)";
+	public function getName($name){
+		//get all records from the owner table
+		$SQL = "SELECT * FROM category WHERE name=:name";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['category_id'=>$this->category_id,
-						'category_name'=>$this->category_name,
-						'item_id'=>$this->item_id]);
-		return self::$_connection->lastInsertId();
+		$STMT->execute(['name'=>$name]);//pass any data for the query
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\Category");
+		return $STMT->fetch();
 	}
-
-
-	
 
 	public function delete(){
 		$SQL = "DELETE FROM category WHERE category_id=:category_id";
