@@ -1,0 +1,51 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+/* The following line is used to measure usage of this code in production. For more info see our usage billing page */
+@import url("https://px.animaapp.com/6374f6bfa53493d46abc3bd2.6374f6c0604356b3b2563710.slQK8fd.hcp.png");
+
+@font-face {
+  font-family: "Rounded Mplus 1c-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/MPLUSRounded1c-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Rounded Mplus 1c-ExtraBold";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/MPLUSRounded1c-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Font Awesome 6 Free-Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Font Awesome 6 Free-Regular-400.otf") format("opentype");
+}
+
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.valign-text-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}

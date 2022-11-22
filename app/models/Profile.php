@@ -9,6 +9,12 @@ class Profile extends \app\core\Models{
 		$STMT->execute(['user_id'=>$this->user_id]);
 	}
 
+	public function getAll(){
+		$SQL = "SELECT * FROM profile"; 
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute();
+	}
+
 	public function getUserProfile($user_id){
 		$SQL = "SELECT * FROM profile WHERE user_id=:user_id";
 		$STMT = self::$_connection->prepare($SQL);
