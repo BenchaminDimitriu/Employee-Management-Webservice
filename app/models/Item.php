@@ -31,9 +31,6 @@ class Item extends \app\core\Models{
 		return self::$_connection->lastInsertId();
 	}
 
-
-	
-
 	public function delete(){
 		$SQL = "DELETE FROM item WHERE item_id=:item_id";
 		$STMT = self::$_connection->prepare($SQL);

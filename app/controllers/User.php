@@ -29,28 +29,24 @@ class User extends \app\core\Controller{
 		}else{
 			$this->view('User/index');
 		}
- 	 }
+	}
 
- 	 public function register(){
-		 if(isset($_POST['action'])){
-			if($_POST['password'] == $_POST['password_confirmation']){
-			 		$user = new \app\models\User();
+	public function logout(){
+		session_destroy();
+		header('location:/User/index?message=You\'ve been successfully logged out');
+	}
 
-			 		if($user->get($_POST['username'])){
-			 			header('location: User/register?error=The Username already exists, Choose another');
-			 		}else{
-			 			$user->username = $_POST['username'];
-			 			$user->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-			 			$user->role = $_POST['role'];
-			 			$user_id =  $user->insert();
-			 			$_SESSION[$_POST['username']] =  $user->username;
-						$_SESSION['user_id'] = $user_id;
-						header('location:/User/index?message=Your profile is set up, login when ready');
-			 		}
-			} 	 	
-		 }else{
-		 	$this->view('User/register');
-		 }
+	 public function remove($user_id){
+			$user = new \app\models\User();
+			$user = $user->getUser($user_id);
+			
+			$profile = new \app\models\Profile();
+			$profile = $profile->getUserProfile($user_id);
+
+			$profile->delete();
+			$user->delete();
+				
+			header('location:/Employee/index?message=User Deleted');
 	 }
 }
 ?>

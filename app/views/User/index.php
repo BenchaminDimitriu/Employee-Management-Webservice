@@ -22,17 +22,12 @@
     <link rel="stylesheet" type="text/css" href="/css/Login/loginStyleGuide.css" />
 
     <script type="text/javascript">
+            
             function popUp(title){
-                alertify.alert().set(title).show();          
+                alertify.set('notifier', 'position', 'top-center');
+                 alertify.error(title);            
               };
-        </script>  
-
-
-      <?php
-        if(isset($_GET['error'])){
-          echo'<script>popUp($_GET["error"]);</script>';
-        }
-      ?>
+        </script> 
   </head>
 
   <body>
@@ -83,3 +78,8 @@
     </div>
   </body>
 </html>
+      <?php
+        if(isset($_GET['error'])){
+          echo"<script>popUp('$_GET[error]');</script>";
+        }
+      ?>
