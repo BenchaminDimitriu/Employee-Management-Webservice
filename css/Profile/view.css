@@ -1,0 +1,41 @@
+body{
+	background-color: rgba(207, 207, 207, 1);
+}
+
+.lightBackground{
+	background-color: rgba(217, 217, 217, 1);
+	position: absolute;
+	width: 75%;
+	height: 75%;
+	left: 13%;
+	top: 20%;
+}
+
+.title{
+	margin-left: 35%;
+	text-align: center;
+	height: 10%;
+	width: 30%;
+	display: inline-block;
+	font-size: 6px;
+	margin-top: 3%;
+}
+
+table {
+    width: 100%;
+    display:block;
+}
+
+th, td {
+    width:550px;
+    text-align: center;
+    padding: 5px;
+}
+
+tbody {
+	background-color: white;
+    height: 320px;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}

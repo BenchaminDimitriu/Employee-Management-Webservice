@@ -11,6 +11,10 @@
     <link rel="stylesheet" type="text/css" href="/css/nav.css" />
     <link rel="stylesheet" type="text/css" href="/css/Item/view.css" />
 
+
+
+
+
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   </head>
 
@@ -48,6 +52,34 @@
               <span>Logout</span>
           </a>
         </div> 
-  
+
+<!-- -->
+        <div class='title' >
+          <h1>Edit Profile</h1> 
+          <hr>
+        </div>
+
+      <div class="Profile_edit"> 
+        <form action='' method='post'>
+            <label>First Name</label>
+            <input type="text" id="username" name='username'/>
+              
+            <br><label>Last Name</label>
+            <input type="password" id="password" name='password'/>
+
+            <br><label>home Address</label>
+            <input type="password" id="password" name='password'/>
+
+            <br><label>Password</label>
+            <input type="password" id="password" name='password'/>
+                        
+            <br><button type="submit" name='action' class='saveButton' value='Login'>Edit Employee</button>
+
+            <br><button type="submit" name='action' class='cancelButton' value='Login' href='/Employee/index'>Cancel</button>
+        </form> 
+
+
+      </div>
+       
   </body>
 </html>
