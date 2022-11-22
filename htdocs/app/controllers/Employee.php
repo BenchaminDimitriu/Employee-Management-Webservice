@@ -11,6 +11,16 @@ class Employee extends \app\core\Controller{
 	}
 
 	public function add(){
-		$this->view('/Employee/add');
+		if(isset($_POST['action'])){
+			$employee = new \app\models\Employee();
+			$employee->first_name = $_POST['first_name'];
+			$employee->last_name = $_POST['last_name'];
+			$employee->address = $_POST['address'];
+			
+			$item->user_id->$_SESSION['user_id'];
+			header('location:/Employee/index');
+			else{
+				$this->view('Employee/add');
+			}
 	}
 }
