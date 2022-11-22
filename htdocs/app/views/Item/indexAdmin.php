@@ -17,17 +17,21 @@
       <div class="overlap-group9">
         
         <div class="itemInventory">  
-          <div class="itemText valign-text-middle roundedmplus1c-regular-normal-white-16px">
-            <i class="fa-solid fa-boxes-stacked"></i>
-            <span>Items</span>
-          </div>
+          <a  href ="/Item/indexAdmin">
+            <div class="itemText valign-text-middle roundedmplus1c-regular-normal-white-16px">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Items</span>
+            </div>
+          </a>
         </div>
 
         <div class="category">
-          <div class="categoryText valign-text-middle roundedmplus1c-regular-normal-white-16px">
-            <span><i class="fa-solid fa-bookmark"></i></span>
-            <span>Category</span>
-          </div>
+          <a  href ="/Category/index">
+            <div class="categoryText valign-text-middle roundedmplus1c-regular-normal-white-16px">
+              <span><i class="fa-solid fa-bookmark"></i></span>
+              <span>Category</span>
+            </div>
+          </a>
         </div>
 
         <div class="employees">
@@ -42,10 +46,12 @@
         <img class="logo" src="/images/Item/logo-1@2x.png" alt="Logo" />
 
         <div class="profile">
-          <div class="profileText valign-text-middle roundedmplus1c-regular-normal-white-16px">
-            <span><i class="fa fa-user"></i></span>
-            <span>Profile</span>
-          </div>
+          <a  href ="/Profile/edit">
+            <div class="profileText valign-text-middle roundedmplus1c-regular-normal-white-16px">
+              <span><i class="fa fa-user"></i></span>
+              <span>Profile</span>
+            </div>
+          </a>
         </div>
 
         <div class="notification">
@@ -56,11 +62,14 @@
         </div>
 
         <div class="logout">
-          <div class="logoutText valign-text-middle roundedmplus1c-regular-normal-white-16px">
-            <span><i class="fa fa-power-off"></i></span>
-            <span>Logout</span>
-          </div>
+          <a  href ="/User/logout">
+            <div class="logoutText valign-text-middle roundedmplus1c-regular-normal-white-16px">
+              <span><i class="fa fa-power-off"></i></span>
+              <span>Logout</span>
+            </div>
+          </a>
         </div>
+        
       </div>
     </div>
   </body>

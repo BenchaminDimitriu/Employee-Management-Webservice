@@ -4,46 +4,38 @@ namespace app\controllers;
 class Employee extends \app\core\Controller{
 
 	public function index(){
-		$employee = new \app\models\Employee();
-		$employees = $employee->getAll();
+		$employee = new \app\models\Profile();
+		$employees = $employee->getAllUserProfile();
 
-		$this->view('Employee/index', $employees);
+		$this->view('Employee/index', ['employee'=>$employees]);
 	}
 
 	public function add(){
 		if(isset($_POST['action'])){
-			$employee = new \app\models\Employee();
-			$employee->first_name = $_POST['first_name'];
-			$employee->last_name = $_POST['last_name'];
-			$employee->address = $_POST['address'];
-			
-			$item->user_id->$_SESSION['user_id'];
-			header('location:/Employee/index');
-			}else{
-				$this->view('Employee/add');
+			if($_POST['username'] == "" || $_POST['password'] == ""){
+				header('location:/Employee/add?error=Please enter username and password');
+			} else{
+					
+					$user = new \app\models\User();
+					$user = $user->get($_POST['username']);
+
+					if($user != null){
+						header('location:/Employee/add?error=Username already taken');
+					} else{
+						$employee = new \app\models\User();
+						$employee->username = $_POST['username'];
+						$employee->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+						
+						$user_id = $employee->insert();
+
+						$profile = new \app\models\Profile();
+						$profile->user_id = $user_id;
+						$profile->insert();
+						header('location:/Employee/index');
+					}
 			}
-	}
-
-	public function editEmployee(){
-		$employee = new \app\models\Employee();
-		$employee = $employee->get($_SESSION['user_id']);
-		if(isset($_POST['action'])){
-			$employee->first_name = $_POST['first_name'];
-			$employee->last_name = $_POST['last_name'];
-			$employee->address = $_POST['address'];
-			$employee->update();
-			header('location:/Employee/index');
-		}else{
-			header('location:/Employee/index?error= Some data not filled.');
+		} else{
+			$this->view('/Employee/add');
 		}
-
 	}
-
-	public function delete($item_id){
-		$employee = new \app\models\Employee();
-		$employee = $employee->get($user_id);
-		$employee->delete();
-	    header('location:/Employee/index');
-	}
-
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2022 at 03:42 PM
+-- Generation Time: Nov 22, 2022 at 04:44 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -76,10 +76,17 @@ DROP TABLE IF EXISTS `profile`;
 CREATE TABLE `profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `address` varchar(50) NOT NULL
+  `first_name` varchar(30) DEFAULT '(not defined)',
+  `last_name` varchar(30) DEFAULT '(not defined)',
+  `address` varchar(50) DEFAULT '(not defined)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`) VALUES
+(10, 25, '(not defined)', '(not defined)', '(not defined)');
 
 -- --------------------------------------------------------
 
@@ -113,7 +120,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
-(4, 'admin1234', '$2y$10$.pSt9Wc0QWg/1WeM.SHMjOBRlqZpZvVOS7RIXlR.JVUrjg3/0QLO6', 'admin');
+(5, 'admin', '$2y$10$71xUDvu3xZm5WLRKfrxt2uaei149f65EtU3QSB9LhE16eQ2KLqqpi', 'admin'),
+(25, 'Julien', '$2y$10$M4z9uiSOUTHI08vyU8CFdub/Te4E6sP2uIRFiy1JMInBBTrmnWsW.', 'employee');
 
 --
 -- Indexes for dumped tables
@@ -158,7 +166,8 @@ ALTER TABLE `result`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -186,7 +195,7 @@ ALTER TABLE `modification`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `result`
@@ -198,7 +207,7 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Constraints for dumped tables
