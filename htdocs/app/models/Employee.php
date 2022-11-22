@@ -29,6 +29,16 @@ class Employee extends \app\core\Models{
 						'address'=>$this->address]);
 		return self::$_connection->lastInsertId();
 	}
+
+	public function update(){
+		$SQL = "UPDATE profile SET first_name=:first_name, last_name=:last_name,address=:address WHERE user_id=:user_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['user_id'=>$this->user_id,
+						'first_name'=>$this->first_name,
+						'last_name'=>$this->last_name,
+						'address'=>$this->address]);
+	}
+
 	public function delete(){
 		$SQL = "DELETE FROM profile WHERE user_id=:user_id";
 		$STMT = self::$_connection->prepare($SQL);
