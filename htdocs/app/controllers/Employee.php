@@ -19,8 +19,15 @@ class Employee extends \app\core\Controller{
 			
 			$item->user_id->$_SESSION['user_id'];
 			header('location:/Employee/index');
-			else{
+			}else{
 				$this->view('Employee/add');
 			}
 	}
+	public function delete($item_id){
+		$employee = new \app\models\Employee();
+		$employee = $employee->get($user_id);
+		$employee->delete();
+	    header('location:/Employee/index');
+	}
+
 }
