@@ -9,6 +9,16 @@ class Profile extends \app\core\Models{
 		$STMT->execute(['user_id'=>$this->user_id]);
 	}
 
+	public function update(){
+		$SQL = "UPDATE profile SET first_name=:first_name, last_name=:last_name, address=:address WHERE profile_id=:profile_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(
+			['first_name'=>$this->first_name, 
+			 'last_name'=>$this->last_name, 
+			 'address'=>$this->address,
+			 'profile_id'=>$this->profile_id]);
+	}
+
 	public function getAll(){
 		$SQL = "SELECT * FROM profile"; 
 		$STMT = self::$_connection->prepare($SQL);
@@ -16,7 +26,7 @@ class Profile extends \app\core\Models{
 	}
 
 	public function getUserProfile($user_id){
-		$SQL = "SELECT * FROM profile WHERE user_id=:user_id";
+		$SQL = "SELECT * FROM profile WHERE user_id=:user_id ";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['user_id'=>$user_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\Profile");

@@ -6,6 +6,7 @@ class Category extends \app\core\Controller{
 	public function index(){
 		$category = new \app\models\Category();
 		$categorys = $category->getAll();
+
 		$this->view('Category/index', ['category'=>$categorys]);
 	}
 

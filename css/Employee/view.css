@@ -17,8 +17,11 @@ body{
 	height: 10%;
 	width: 30%;
 	display: inline-block;
-	font-size: 6px;
 	margin-top: 3%;
+}
+
+#addButton{
+	margin-left: 18%;
 }
 
 table {
@@ -33,9 +36,8 @@ th, td {
 }
 
 tbody {
-	background-color: white;
-    height: 320px;
+	height: 320px;
     display: inline-block;
-    width: 100%;
-    overflow: auto;
+	background-color: white;
+	overflow: auto;
 }

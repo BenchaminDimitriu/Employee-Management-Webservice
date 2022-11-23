@@ -21,21 +21,15 @@ body{
 	margin-top: 3%;
 }
 
-table {
-    width: 100%;
-    display:block;
+.float-container {
+    padding: 20px;
+    height: 350px;
 }
 
-th, td {
-    width:550px;
-    text-align: center;
-    padding: 5px;
-}
-
-tbody {
-	background-color: white;
-    height: 320px;
-    display: inline-block;
-    width: 100%;
-    overflow: auto;
-}
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    padding-left: 10%;
+    height: 100%;
+}  	
