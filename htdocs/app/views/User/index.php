@@ -24,8 +24,8 @@
     <script type="text/javascript">
             
             function popUp(title){
-                alertify.set('notifier', 'position', 'top-center');
-                 alertify.error(title);            
+                  alertify.set('notifier', 'position', 'top-center');
+                  alertify.error(title);            
               };
         </script> 
   </head>

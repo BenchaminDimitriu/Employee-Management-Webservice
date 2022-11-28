@@ -17,11 +17,12 @@ body{
 	height: 10%;
 	width: 30%;
 	display: inline-block;
+	font-size: 6px;
 	margin-top: 3%;
 }
 
 #addButton{
-	margin-left: 18%;
+	margin-left: 17%;
 }
 
 table {
@@ -41,3 +42,4 @@ tbody {
 	background-color: white;
 	overflow: auto;
 }
+

@@ -11,6 +11,14 @@ class Item extends \app\core\Models{
 		return $STMT->fetchAll();
 	}
 
+	public function getAllForCat($category_id){
+		$SQL = "SELECT * FROM item WHERE category_id=:category_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['category_id'=>$category_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Item');
+		return $STMT->fetchAll();
+	}
+
 	public function get($item_id){
 		$SQL = "SELECT * FROM item WHERE item_id=:item_id";
 		$STMT = self::$_connection->prepare($SQL);

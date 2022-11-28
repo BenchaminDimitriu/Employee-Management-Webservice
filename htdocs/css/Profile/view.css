@@ -17,27 +17,19 @@ body{
 	height: 10%;
 	width: 30%;
 	display: inline-block;
+	font-size: 6px;
 	margin-top: 3%;
 }
 
-#addButton{
-	margin-left: 18%;
+.float-container {
+    padding: 20px;
+    height: 350px;
 }
 
-table {
-    width: 100%;
-    display:block;
-}
-
-th, td {
-    width:550px;
-    text-align: center;
-    padding: 5px;
-}
-
-tbody {
-	height: 320px;
-    display: inline-block;
-	background-color: white;
-	overflow: auto;
-}
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    padding-left: 10%;
+    height: 100%;
+}  	

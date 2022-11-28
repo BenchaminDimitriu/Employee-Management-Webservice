@@ -4,7 +4,7 @@ namespace app\controllers;
 class Item extends \app\core\Controller{
 
 	public function indexAdmin(){
-		$this->view('/Item/indexAdmin');
+		$this->view('/Item/index');
 	}
 
 	#[\app\filters\Login]
@@ -20,11 +20,7 @@ class Item extends \app\core\Controller{
 
 			$item->insert();
 
-			if($_SESSION['role'] == 'admin'){
-					header('location:/Item/indexAdmin?message=Item Created');
-			}else{
-					header('location:/Item/indexEmployee?message=Item Created');
-			}
+			header('location:/Item/index?message=Item Created');
 		}else{
 			//Gets all of the categorys
 	 		$category = new \jkn_bay\models\Category();
