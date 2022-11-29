@@ -7,7 +7,10 @@ class Category extends \app\core\Controller{
 		$category = new \app\models\Category();
 		$categorys = $category->getAll();
 
-		$this->view('Category/index', ['category'=>$categorys]);
+		$category = new \app\models\Category();
+		$emptyCat = $category->getAllEmpty();
+
+		$this->view('Category/index', ['category'=>$categorys, 'emptyCat'=>$emptyCat]);
 	}
 
 	#[\app\filters\Login]
