@@ -21,4 +21,8 @@ function confirm(category_id) {
                     alertify.error('Cancel');
                   }
                 }, " ");
-            };  
+            };
+
+function editName(name, category_id) {
+  window.location.href = '/Category/edit/' + name + '/' + category_id;
+};  

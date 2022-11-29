@@ -27,6 +27,12 @@
       <script type="text/javascript" src="/js/popUp.js"></script>
       <script type="text/javascript" src="/js/category.js"></script>
 
+      <script type="text/javascript">
+        function editName(category_id) {
+          window.location.href = '/Category/edit/' + newName + '/' + category_id;
+        };  
+      </script>
+
       <title>Category</title>
 
   </head>
@@ -60,7 +66,7 @@
               <?php
                 foreach($data['category'] as $item)
                 { echo" 
-                      <tr><td><input value='$item->name'></input></td><td>$item->totalS</td><td>$$item->totalP</td><td>
+                      <tr><td><input id='name' onfocusout='editName($item->category_id)' value='$item->name'></input></td><td>$item->totalS</td><td>$$item->totalP</td><td>
                       <button onclick='confirm($item->category_id)' class='btn btn-danger' id='dele teBut'>Delete</button></td></tr>
                     ";
                 }

@@ -30,6 +30,26 @@ class Category extends \app\core\Controller{
 		}	
 	}
 
+	#[\app\filters\Login]
+ 	public function edit($name, $category_id){
+		if($name == 'null'){
+			header('location:/Category/index?error=Category name cannot be blank');
+		} else{
+			$category= new \app\models\Category();
+			$category = $category->getName($name);
+
+			if($category != null){
+				header('location:/Category/index?error=Category name already taken');
+			} else{
+				$category= new \app\models\Category();
+				$category = $category->get($category_id);
+				$category->name = $name;
+				$category->update();
+				header('location:/Category/index');
+			}
+		}	
+	}
+
 
 	#[\app\filters\Login]
 	public function remove($category_id){
