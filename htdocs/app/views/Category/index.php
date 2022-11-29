@@ -14,7 +14,7 @@
 
       <!-- Style Sheets -->
       <link rel="stylesheet" type="text/css" href="/css/nav.css" />
-      <link rel="stylesheet" type="text/css" href="/css/Employee/view.css" />
+      <link rel="stylesheet" type="text/css" href="/css/Category/view.css" />
 
       <!-- Alertify -->
       <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
@@ -25,14 +25,14 @@
 
       <!-- Javascript Files -->
       <script type="text/javascript" src="/js/popUp.js"></script>
-      <script type="text/javascript" src="/js/employee.js"></script>
-      
-      <title>Employee</title>
+      <script type="text/javascript" src="/js/category.js"></script>
+
+      <title>Category</title>
 
   </head>
 
   <body>
-
+      
       <!-- Nav -->
       <?php $this->view('nav'); ?>
 
@@ -41,40 +41,41 @@
           
           <!-- Title of Page -->
           <div class='title' >
-            <h1>Employees</h1> 
-          </div> 
-
-          <!-- Add Employee -->
-          <a id='addButton' href='/Employee/add' class='btn btn-success'>Add Employee</a>
+            <h1>Category</h1> 
+          </div>  
+    
+          <!-- Add Category -->
+          <button id='addButton' onclick="prompt()" class='btn btn-success'>Add Category</button>
+    
     
           <hr class='line'>
 
-          <!-- Table to display the employees -->
+          <!-- Table of categories -->
           <table>
             <thead>
-              <tr><th>USERNAME</th><th>FIRST NAME</th><th>LAST NAME</th><th>HOME ADDRESS</th><th></th></tr>
+              <tr><th>NAME</th><th># OF ITEMS</th><th>TOTAL SELLING PRICE</th><th></th></tr>
             </thead>
-            
+      
             <tbody>
               <?php
-                foreach($data['employee'] as $item)
+                foreach($data['category'] as $item)
                 { echo" 
-                      <tr><td>$item->username</td><td>$item->first_name</td><td>$item->last_name</td><td>$item->address</td><td>
-                      <button onclick='confirm($item->user_id)' class='btn btn-danger' id='deleteBut'>Delete</button></td></tr>
+                      <tr><td><input value='$item->name'></input></td><td>$item->totalS</td><td>$$item->totalP</td><td>
+                      <button onclick='confirm($item->category_id)' class='btn btn-danger' id='dele teBut'>Delete</button></td></tr>
                     ";
                 }
               ?>
             </tbody>
           </table>
-
+          
           <hr class='line2'>
       </div>
   
   </body>
 
 </html>
-
-      <!-- Pop Ups -->
+      
+      <!-- PopUp Acceptances -->
       <?php
         if(isset($_GET['message'])){
           echo"<script>popUpSuccess('$_GET[message]');</script>";

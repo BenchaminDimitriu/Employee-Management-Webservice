@@ -22,12 +22,12 @@ class User extends \app\core\Models{
 		return $STMT->fetch();
 	}
 
-	// public function updatePassword(){
-	// 	$SQL = "UPDATE user SET password_hash=:password_hash WHERE user_id=:user_id";
-	// 	$STMT = self::$_connection->prepare($SQL);
-	// 	$STMT->execute(['password_hash'=>$this->password_hash,
-	// 					'user_id'=>$this->user_id]);
-	// }
+	public function updatePassword(){
+		$SQL = "UPDATE user SET password_hash=:password_hash WHERE user_id=:user_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['password_hash'=>$this->password_hash,
+						'user_id'=>$this->user_id]);
+	}
 
 	public function getUser($user_id){
 		$SQL = "SELECT * FROM user WHERE user_id=:user_id";
