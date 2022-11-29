@@ -31,7 +31,7 @@ class Employee extends \app\core\Controller{
 						$profile = new \app\models\Profile();
 						$profile->user_id = $user_id;
 						$profile->insert();
-						header('location:/Employee/index');
+						header('location:/Employee/index?message=Employee created');
 					}
 			}
 		} else{

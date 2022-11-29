@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2022 at 04:44 PM
+-- Generation Time: Nov 23, 2022 at 02:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,9 +32,31 @@ USE `healing_rehab`;
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
-  `category_name` varchar(20) NOT NULL,
-  `item_id` int(11) NOT NULL
+  `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `name`) VALUES
+(22, '1'),
+(21, '2'),
+(20, '3'),
+(19, 'aaa'),
+(26, 'Cool'),
+(12, 'Cream'),
+(17, 'dd'),
+(18, 'dds'),
+(27, 'f'),
+(29, 'hhh'),
+(23, 'md'),
+(15, 'R'),
+(24, 's'),
+(16, 'ss'),
+(14, 'test3'),
+(28, 'undefined'),
+(25, 'x');
 
 -- --------------------------------------------------------
 
@@ -45,13 +67,29 @@ CREATE TABLE `category` (
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
-  `item_name` varchar(30) NOT NULL,
-  `item_qty` int(11) NOT NULL,
-  `item_Pprice` float NOT NULL,
-  `item_Sprice` float NOT NULL,
-  `item_discount` int(11) DEFAULT NULL,
+  `name` varchar(30) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `Pprice` float NOT NULL,
+  `Sprice` float NOT NULL,
+  `discount` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `name`, `qty`, `Pprice`, `Sprice`, `discount`, `category_id`) VALUES
+(4, 'Test2', 3, 100, 120, NULL, 12),
+(5, 'test', 1, 12, 33, NULL, 14),
+(6, 'x', 3, 11, 45, NULL, 15),
+(7, 'dd', 0, 0, 0, NULL, 19),
+(8, 'd', 1, 3, 4, NULL, 19),
+(9, 'ws', 5, 2, 2, NULL, 18),
+(10, 's', 1, 1, 1, NULL, 16),
+(11, '1', 1, 1, 1, NULL, 22),
+(12, '111', 1, 1, 1, NULL, 21),
+(13, 'a', 1, 1, 1, NULL, 20);
 
 -- --------------------------------------------------------
 
@@ -86,7 +124,8 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`) VALUES
-(10, 25, '(not defined)', '(not defined)', '(not defined)');
+(57, 75, '(not defined)', '(not defined)', '(not defined)'),
+(66, 85, 'Julien', 'Bernardo', 'H7Y2C4');
 
 -- --------------------------------------------------------
 
@@ -120,8 +159,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
-(5, 'admin', '$2y$10$71xUDvu3xZm5WLRKfrxt2uaei149f65EtU3QSB9LhE16eQ2KLqqpi', 'admin'),
-(25, 'Julien', '$2y$10$M4z9uiSOUTHI08vyU8CFdub/Te4E6sP2uIRFiy1JMInBBTrmnWsW.', 'employee');
+(75, 'admin', '$2y$10$4MQ0wca0lDTw35R6xUWa/e/Q7A5sktPj3OU2GSvhgtFEgFRkcS9gO', 'admin'),
+(85, 'Julien', '$2y$10$02rCnvZhJ1xpf15kx2./u.7VvHvD8p7WPKk6wbDzKoahAY5hElfze', 'employee');
 
 --
 -- Indexes for dumped tables
@@ -132,7 +171,7 @@ INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`),
-  ADD KEY `category_to_item` (`item_id`);
+  ADD UNIQUE KEY `category_name` (`name`);
 
 --
 -- Indexes for table `item`
@@ -177,13 +216,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `modification`
@@ -195,7 +234,7 @@ ALTER TABLE `modification`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `result`
@@ -207,17 +246,11 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `category`
---
-ALTER TABLE `category`
-  ADD CONSTRAINT `category_to_item` FOREIGN KEY (`item_id`) REFERENCES `item` (`Item_id`);
 
 --
 -- Constraints for table `item`

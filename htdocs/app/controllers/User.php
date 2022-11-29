@@ -36,7 +36,7 @@ class User extends \app\core\Controller{
 		header('location:/User/index?message=You\'ve been successfully logged out');
 	}
 
-	 public function remove($user_id){
+	public function remove($user_id){
 			$user = new \app\models\User();
 			$user = $user->getUser($user_id);
 			
@@ -46,7 +46,7 @@ class User extends \app\core\Controller{
 			$profile->delete();
 			$user->delete();
 				
-			header('location:/Employee/index?message=User Deleted');
+			header('location:/Employee/index?error=Employee Deleted');
 	 }
 }
 ?>
