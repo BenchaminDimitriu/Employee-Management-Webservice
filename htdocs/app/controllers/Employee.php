@@ -2,14 +2,16 @@
 namespace app\controllers;
 
 class Employee extends \app\core\Controller{
-
+	#[\app\filters\Login]
+	#[\app\filters\Admin]
 	public function index(){
 		$employee = new \app\models\Profile();
 		$employees = $employee->getAllUserProfile();
 
 		$this->view('Employee/index', ['employee'=>$employees]);
 	}
-
+	#[\app\filters\Login]
+	#[\app\filters\Admin]
 	public function add(){
 		if(isset($_POST['action'])){
 			if($_POST['username'] == "" || $_POST['password'] == ""){

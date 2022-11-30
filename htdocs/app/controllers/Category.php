@@ -2,7 +2,7 @@
 namespace app\controllers;
 
 class Category extends \app\core\Controller{
-
+	#[\app\filters\Login]
 	public function index(){
 		$category = new \app\models\Category();
 		$categorys = $category->getAll();
