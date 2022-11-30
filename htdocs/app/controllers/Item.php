@@ -2,7 +2,7 @@
 namespace app\controllers;
 
 class Item extends \app\core\Controller{
-
+	#[\app\filters\Login]
 	public function indexAdmin(){
 		$this->view('/Item/index');
 	}

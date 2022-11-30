@@ -2,7 +2,7 @@
 namespace app\controllers;
 
 class Profile extends \app\core\Controller{
-
+	#[\app\filters\Login]
 	public function edit(){
 		
 		$profile = new \app\models\Profile();

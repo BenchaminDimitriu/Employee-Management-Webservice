@@ -35,7 +35,8 @@ class User extends \app\core\Controller{
 		session_destroy();
 		header('location:/User/index?message=You\'ve been successfully logged out');
 	}
-
+	#[\app\filters\Login]
+	#[\app\filters\Admin]
 	public function remove($user_id){
 			$user = new \app\models\User();
 			$user = $user->getUser($user_id);
