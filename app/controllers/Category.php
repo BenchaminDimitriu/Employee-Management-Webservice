@@ -14,8 +14,8 @@ class Category extends \app\core\Controller{
 	}
 
 	#[\app\filters\Login]
- 	public function add($name){
-		if($name == 'null'){
+ 	public function add(){
+		if($_POST['name'] == ''){
 			header('location:/Category/index?error=Please enter the category name');
 		} else{
 			$category= new \app\models\Category();
@@ -25,7 +25,7 @@ class Category extends \app\core\Controller{
 				header('location:/Category/index?error=Category name already taken');
 			} else{
 				$category= new \app\models\Category();
-				$category->name = $name;
+				$category->name = $_POST['name'];
 				$category->insert();
 
 				header('location:/Category/index?message=Category was Created');

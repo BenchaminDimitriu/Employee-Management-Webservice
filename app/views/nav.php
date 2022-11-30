@@ -1,6 +1,6 @@
 <!-- Nav Bar -->
 <div class='navbar'> 
-  <a  href ="/Item/indexAdmin">
+  <a  href ="/Item/index">
     <i class="fa-solid fa-boxes-stacked"></i>
     <span>Item</span>
     </a>

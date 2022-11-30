@@ -27,13 +27,6 @@
       <script type="text/javascript" src="/js/popUp.js"></script>
       <script type="text/javascript" src="/js/category.js"></script>
 
-      <script type="text/javascript">
-        function editName(category_id) {
-          alert(document.getElementById(name) );
-          window.location.href = '/Category/edit/' + newName + '/' + category_id;
-        };  
-      </script>
-
       <title>Category</title>
 
   </head>
@@ -52,7 +45,7 @@
           </div>  
     
           <!-- Add Category -->
-          <button id='addButton' onclick="prompt()" class='btn btn-success'>Add Category</button>
+          <button id="mbtn" class="btn btn-success" style='margin-left: 18%;'>Add Category</button>
     
     
           <hr class='line'>
@@ -86,6 +79,61 @@
       </div>
   
   </body>
+
+  <!-- The modal -->
+  <div id='modalDialog' class='modal' style="width:40%; margin-top: 7%; margin-left:30%;">
+    <div class='modal-content animate-top'>
+        <div class='modal-header' style="color: white; background-color: black;">
+          <h5 class="modal-title">Create Category</h5>
+          <button type="button" class='btn' id="close" data-dismiss="modal" aria-label="Close">
+            <span style='color: white;'>x</span>
+          </button>
+        </div>
+        <form method="post" id="replyFrm">
+          <div class="modal-body" style='background-color: silver;'>
+            <div class="response"></div>
+
+            <div class="form-group" style='margin-bottom: 5%;'>
+              <label for="name">Enter Name</label>
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
+          </div>
+
+          <div class="modal-footer" style='background-color: silver;'>
+              <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
+              <button  class="btn btn-danger">CANCEL</button>
+          </div>  
+        </form>
+        
+    </div>
+  </div>
+
+<script>
+    $(document).ready(function(){
+      $('#submit').submit(function(e){
+        $.ajax({
+          type: "POST",
+          url: "/Category/add",
+          data: { name : name }
+        });
+      });
+    });
+
+    var modal = $('#modalDialog');
+    var btn = $("#mbtn");
+    var span = $("#close");
+
+    $(document).ready(function(){
+      btn.on('click', function(){
+        modal.show();
+      });
+
+      span.on('click', function(){
+        modal.hide();
+      });
+    });
+
+  </script>
 
 </html>
       
