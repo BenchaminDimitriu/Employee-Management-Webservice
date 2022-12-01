@@ -12,13 +12,20 @@ body{
 }
 
 .title{
-	margin-left: 35%;
+	margin-left: 15%;
+	margin-right: 22%;
 	text-align: center;
 	height: 10%;
 	width: 30%;
 	display: inline-block;
 	font-size: 6px;
 	margin-top: 3%;
+}
+
+#filters{
+	width: 200px;
+	display: inline-block;
+	margin-left: 2%;
 }
 
 table {
@@ -38,4 +45,13 @@ tbody {
     display: inline-block;
     width: 100%;
     overflow: auto;
+}
+
+th{
+	width: 6%;
+	border: solid 2px blue;
+}
+
+td{
+	border: solid 2px;
 }

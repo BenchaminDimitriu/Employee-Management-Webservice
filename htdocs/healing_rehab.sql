@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2022 at 02:52 PM
+-- Generation Time: Nov 30, 2022 at 03:14 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,23 +40,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `name`) VALUES
-(22, '1'),
-(21, '2'),
 (20, '3'),
-(19, 'aaa'),
-(26, 'Cool'),
-(12, 'Cream'),
-(17, 'dd'),
-(18, 'dds'),
-(27, 'f'),
-(29, 'hhh'),
-(23, 'md'),
-(15, 'R'),
-(24, 's'),
-(16, 'ss'),
-(14, 'test3'),
-(28, 'undefined'),
-(25, 'x');
+(30, 'Cream');
 
 -- --------------------------------------------------------
 
@@ -67,7 +52,7 @@ INSERT INTO `category` (`category_id`, `name`) VALUES
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `item_name` varchar(30) NOT NULL,
   `qty` int(11) NOT NULL,
   `Pprice` float NOT NULL,
   `Sprice` float NOT NULL,
@@ -79,17 +64,8 @@ CREATE TABLE `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `name`, `qty`, `Pprice`, `Sprice`, `discount`, `category_id`) VALUES
-(4, 'Test2', 3, 100, 120, NULL, 12),
-(5, 'test', 1, 12, 33, NULL, 14),
-(6, 'x', 3, 11, 45, NULL, 15),
-(7, 'dd', 0, 0, 0, NULL, 19),
-(8, 'd', 1, 3, 4, NULL, 19),
-(9, 'ws', 5, 2, 2, NULL, 18),
-(10, 's', 1, 1, 1, NULL, 16),
-(11, '1', 1, 1, 1, NULL, 22),
-(12, '111', 1, 1, 1, NULL, 21),
-(13, 'a', 1, 1, 1, NULL, 20);
+INSERT INTO `item` (`item_id`, `item_name`, `qty`, `Pprice`, `Sprice`, `discount`, `category_id`) VALUES
+(13, 'Sun Screen', 3, 20.99, 99.99, NULL, 30);
 
 -- --------------------------------------------------------
 
@@ -124,8 +100,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`) VALUES
-(57, 75, '(not defined)', '(not defined)', '(not defined)'),
-(66, 85, 'Julien', 'Bernardo', 'H7Y2C4');
+(57, 75, '(not defined)', '(not defined)', '(not defined)');
 
 -- --------------------------------------------------------
 
@@ -159,8 +134,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
-(75, 'admin', '$2y$10$4MQ0wca0lDTw35R6xUWa/e/Q7A5sktPj3OU2GSvhgtFEgFRkcS9gO', 'admin'),
-(85, 'Julien', '$2y$10$02rCnvZhJ1xpf15kx2./u.7VvHvD8p7WPKk6wbDzKoahAY5hElfze', 'employee');
+(75, 'admin', '$2y$10$4MQ0wca0lDTw35R6xUWa/e/Q7A5sktPj3OU2GSvhgtFEgFRkcS9gO', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -216,13 +190,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `modification`

@@ -45,7 +45,7 @@
           </div> 
 
           <!-- Add Employee -->
-          <a id='addButton' href='/Employee/add' class='btn btn-success'>Add Employee</a>
+          <button id="mbtn" class="btn btn-success" style='margin-left: 18%;'>Add employee</button>
     
           <hr class='line'>
 
@@ -71,6 +71,68 @@
       </div>
   
   </body>
+
+
+<!-- The modal -->
+  <div id='modalDialog' class='modal' style="width:40%; margin-top: 7%; margin-left:30%;">
+    <div class='modal-content animate-top'>
+        <div class='modal-header' style="color: white; background-color: black;">
+          <h5 class="modal-title">Create Employee</h5>
+          <button type="button" class='btn' id="close" data-dismiss="modal" aria-label="Close">
+            <span style='color: white;'>x</span>
+          </button>
+        </div>
+        <form method="post" id="replyFrm">
+          <div class="modal-body" style='background-color: silver;'>
+            <div class="response"></div>
+
+            <div class="form-group" style='margin-bottom: 5%;'>
+              <label for="username">Enter Username</label>
+              <input type="text" class="form-control" id="username" name="username">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Enter password</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+          </div>
+
+          <div class="modal-footer" style='background-color: silver;'>
+              <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
+              <button  class="btn btn-danger">CANCEL</button>
+          </div>  
+        </form>
+        
+    </div>
+  </div>
+
+<script>
+    $(document).ready(function(){
+      $('#submit').submit(function(e){
+        $.ajax({
+          type: "POST",
+          url: "/Employee/add",
+          data: { username : username, password: password }
+        });
+      });
+    });
+
+    var modal = $('#modalDialog');
+    var btn = $("#mbtn");
+    var span = $("#close");
+
+    $(document).ready(function(){
+      btn.on('click', function(){
+        modal.show();
+      });
+
+      span.on('click', function(){
+        modal.hide();
+      });
+    });
+
+  </script>
+
 
 </html>
 

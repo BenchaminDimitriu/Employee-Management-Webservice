@@ -7,12 +7,15 @@ class Category extends \app\core\Controller{
 		$category = new \app\models\Category();
 		$categorys = $category->getAll();
 
-		$this->view('Category/index', ['category'=>$categorys]);
+		$category = new \app\models\Category();
+		$emptyCat = $category->getAllEmpty();
+
+		$this->view('Category/index', ['category'=>$categorys, 'emptyCat'=>$emptyCat]);
 	}
 
 	#[\app\filters\Login]
- 	public function add($name){
-		if($name == 'null'){
+ 	public function add(){
+		if($_POST['name'] == ''){
 			header('location:/Category/index?error=Please enter the category name');
 		} else{
 			$category= new \app\models\Category();
@@ -22,10 +25,30 @@ class Category extends \app\core\Controller{
 				header('location:/Category/index?error=Category name already taken');
 			} else{
 				$category= new \app\models\Category();
-				$category->name = $name;
+				$category->name = $_POST['name'];
 				$category->insert();
 
 				header('location:/Category/index?message=Category was Created');
+			}
+		}	
+	}
+
+	#[\app\filters\Login]
+ 	public function edit($name, $category_id){
+		if($name == 'null'){
+			header('location:/Category/index?error=Category name cannot be blank');
+		} else{
+			$category= new \app\models\Category();
+			$category = $category->getName($name);
+
+			if($category != null){
+				header('location:/Category/index?error=Category name already taken');
+			} else{
+				$category= new \app\models\Category();
+				$category = $category->get($category_id);
+				$category->name = $name;
+				$category->update();
+				header('location:/Category/index');
 			}
 		}	
 	}
