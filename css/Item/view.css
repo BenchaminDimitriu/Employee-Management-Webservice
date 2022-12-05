@@ -1,6 +1,24 @@
+.lightBackground1{
+    background-color: lightgreen;
+    position: absolute;
+    width: 48%;
+    height: 75%;
+    left: 51%;
+    top: 20%;
+}
+
+.lightBackground2{
+    background-color: lightcoral;
+    position: absolute;
+    width: 48%;
+    height: 75%;
+    margin-left: 1%;
+    top: 20%;
+}
+
 .titleItem{
-    margin-left: 15%;
-    margin-right: 24%;
+    margin-left: 8%;
+    margin-right: 15%;
     text-align: center;
     height: 10%;
     width: 30%;
@@ -8,6 +26,18 @@
     font-size: 6px;
     margin-top: 3%;
 }
+
+.titleSelling{
+    margin-left: 15%;
+    margin-right: 24%;
+    text-align: center;
+    height: 10%;
+    width: 60%;
+    display: inline-block;
+    font-size: 6px;
+    margin-top: 3%;
+}
+
 
 #filters{
 	width: 200px;

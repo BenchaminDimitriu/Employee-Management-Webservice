@@ -32,3 +32,7 @@
 .mainContainer.blur {
   filter: blur(4px);
 }
+
+.lightBackground.blur {
+  filter: blur(4px);
+}

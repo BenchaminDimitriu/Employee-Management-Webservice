@@ -19,7 +19,7 @@
       <!-- Nav -->
       <?php $this->view('nav', $data); ?>
       
-      <div class='lightBackground'>
+      <div class='lightBackground1'>
       
         <!-- Filter -->
         <div id='filters'>
@@ -57,6 +57,7 @@
                 <th>SELLING PRICE</th>
                 <th>CATEGORY</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
 
@@ -73,6 +74,7 @@
                         <td>$$item->Pprice</td>
                         <td>$$item->Sprice</td>
                         <td>$item->name</td>
+                        <td><button class='mbtn2 btn btn-primary' item_id='". $item->item_id . "'>Edit</button></td>
                         <td><button onclick='confirm($item->item_id)' class='btn btn-danger' id='deleteBut'>Delete</button></td>
                       </tr>
                     ";
@@ -87,21 +89,77 @@
         <!-- Totals -->
         <div class='total'>
           <span>Total</span>
-          <span style='margin-left: 49%;'>$<?= $totalP ?></span>
-          <span style='margin-left: 25.5%;'>$<?= $totalS ?></span>
+          <span style='font-weight:bold; margin-left: 38%;'>$<?= $totalP ?></span>
+          <span style='font-weight:bold; margin-left: 12%;'>$<?= $totalS ?></span>
         </div>
         
         <br>
 
         <div class='profit'>
         <span>Profit</span>
-        <span style='color: green; margin-left: 76%;'>$<?= $totalS-$totalP ?></span>
+        <span style='font-weight:bold; color: green; margin-left: 60%;'>$<?= $totalS-$totalP ?></span>
+        </div>
+      </div>
+
+       <div class='lightBackground2'>
+      
+        <div class='titleSelling' >
+          <h1>Selling Summary</h1> 
+        </div> 
+
+        <hr class='line'>
+
+        <!-- Table to display the employees -->
+        <div class="fixTableHead">
+          <table>
+            <thead>
+              <tr>
+                <th>DATE</th>
+                <th>PRODUCT NAME</th>
+                <th>MODIFICATION</th>
+                <th>DISCOUNT</th>
+                <th>SELLING PRICE</th>
+                <th>PURCHASE PRICE</th>
+                <th>USER</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              
+              <?php
+                $totalS = 0;
+                $totalP = 0;
+                foreach($data['sellingSum'] as $item)
+                { echo" 
+                      <tr>
+                        <td>$item->date</td>
+                        <td id='test'>$item->item_name</td>
+                        <td>$$item->amount</td>
+                        <td>$$item->discount</td>
+                        <td>$item->sellingP</td>
+                        <td>$item->purchaseP</td>
+                        <td>$item->username</td>
+                      </tr>
+                    ";
+                    $totalP += $item->Pprice;
+                    $totalS += $item->Sprice;
+                }
+              ?>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Totals -->
+        <div class='total'>
+          <span>Total discount</span>
+          <span style='font-weight:bold; margin-left: 38%;'>$<?= $totalP ?></span>
+          <span style='font-weight:bold; margin-left: 12%;'>$<?= $totalS ?></span>
         </div>
       </div>
     </div>
   </body>
 
-<!-- Modal -->
+<!-- Modal for Add -->
   <div class="modal">
     <div class="content" style="background-color: black; color: white;">
       <h1> Add an Item</h1>
@@ -143,5 +201,4 @@
           </form>
       </p>
     </div>
-  </div>
 </html>

@@ -9,6 +9,7 @@ function modalPop(){
       $('.modal' ).addClass('open' ); 
       if ( $('.modal' ).hasClass('open' ) ) {
         $('.mainContainer' ).addClass('blur' );
+        $('.lightBackground' ).addClass('blur' );
       }
   });
 
@@ -16,6 +17,7 @@ function modalPop(){
     modal.hide();
      $( '.modal' ).removeClass( 'open' );
      $( '.mainContainer' ).removeClass( 'blur' );
+       $( '.lightBackground' ).removeClass( 'blur' );
   });
 };
 

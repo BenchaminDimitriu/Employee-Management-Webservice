@@ -5,7 +5,7 @@
       <?php $this->view('header'); ?>
 
     <!-- Js -->
-      <link rel="stylesheet" type="text/css" href="/css/Category/view.css" />
+      <script type="text/javascript" src="/js/category.js"></script>
     
     <title>Category</title>
   </head>

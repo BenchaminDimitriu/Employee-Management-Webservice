@@ -43,7 +43,10 @@
               </div>
 
               <div class='float-child'>
-                <p>Change Password:</p>
+                <p style="margin-bottom: 10px;">Change Account:</p>
+                <label>Username</label>
+                <input type="text"  class="form-control" style='max-width: 60%; margin-bottom: 4%;' value='<?= $data['profile']->username ?>' name='username'/>
+
                 <label>New Password</label>
                 <input type="password"  class="form-control" style='max-width: 60%; margin-bottom: 5%;' id="password" name='password'/>
 

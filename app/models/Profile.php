@@ -26,7 +26,7 @@ class Profile extends \app\core\Models{
 	}
 
 	public function getUserProfile($user_id){
-		$SQL = "SELECT * FROM profile WHERE user_id=:user_id ";
+		$SQL = "SELECT user.username, profile.* FROM profile JOIN user ON user.user_id = profile.user_id WHERE profile.user_id=:user_id ";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['user_id'=>$user_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\Profile");
