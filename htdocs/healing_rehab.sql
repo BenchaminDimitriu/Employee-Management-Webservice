@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2022 at 02:52 PM
+-- Generation Time: Dec 05, 2022 at 03:22 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,23 +40,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `name`) VALUES
-(22, '1'),
-(21, '2'),
-(20, '3'),
-(19, 'aaa'),
-(26, 'Cool'),
-(12, 'Cream'),
-(17, 'dd'),
-(18, 'dds'),
-(27, 'f'),
-(29, 'hhh'),
-(23, 'md'),
-(15, 'R'),
-(24, 's'),
-(16, 'ss'),
-(14, 'test3'),
-(28, 'undefined'),
-(25, 'x');
+(30, ''),
+(36, 'Oils');
 
 -- --------------------------------------------------------
 
@@ -67,11 +52,10 @@ INSERT INTO `category` (`category_id`, `name`) VALUES
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `item_id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `item_name` varchar(30) NOT NULL,
   `qty` int(11) NOT NULL,
   `Pprice` float NOT NULL,
   `Sprice` float NOT NULL,
-  `discount` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -79,17 +63,12 @@ CREATE TABLE `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `name`, `qty`, `Pprice`, `Sprice`, `discount`, `category_id`) VALUES
-(4, 'Test2', 3, 100, 120, NULL, 12),
-(5, 'test', 1, 12, 33, NULL, 14),
-(6, 'x', 3, 11, 45, NULL, 15),
-(7, 'dd', 0, 0, 0, NULL, 19),
-(8, 'd', 1, 3, 4, NULL, 19),
-(9, 'ws', 5, 2, 2, NULL, 18),
-(10, 's', 1, 1, 1, NULL, 16),
-(11, '1', 1, 1, 1, NULL, 22),
-(12, '111', 1, 1, 1, NULL, 21),
-(13, 'a', 1, 1, 1, NULL, 20);
+INSERT INTO `item` (`item_id`, `item_name`, `qty`, `Pprice`, `Sprice`, `category_id`) VALUES
+(36, 'Sun screen', 2, 99.99, 200.99, 30),
+(37, 'La neige', 5, 34.99, 50.99, 36),
+(38, 'Exfoliator', 10, 12.99, 2.99, 30),
+(56, 'test', 1, 1, 1, 36),
+(57, 'h', 1, 1, 1, 36);
 
 -- --------------------------------------------------------
 
@@ -100,8 +79,13 @@ INSERT INTO `item` (`item_id`, `name`, `qty`, `Pprice`, `Sprice`, `discount`, `c
 DROP TABLE IF EXISTS `modification`;
 CREATE TABLE `modification` (
   `modification_id` int(11) NOT NULL,
-  `result_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `item_name` varchar(50) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `discount` int(11) DEFAULT NULL,
+  `sellingP` float NOT NULL,
+  `purchaseP` float NOT NULL,
+  `username` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -124,21 +108,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`) VALUES
-(57, 75, '(not defined)', '(not defined)', '(not defined)'),
-(66, 85, 'Julien', 'Bernardo', 'H7Y2C4');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `result`
---
-
-DROP TABLE IF EXISTS `result`;
-CREATE TABLE `result` (
-  `result_id` int(11) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
-  `profile_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(57, 75, '(not defined)', '(not defined)', '(not defined)');
 
 -- --------------------------------------------------------
 
@@ -159,8 +129,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
-(75, 'admin', '$2y$10$4MQ0wca0lDTw35R6xUWa/e/Q7A5sktPj3OU2GSvhgtFEgFRkcS9gO', 'admin'),
-(85, 'Julien', '$2y$10$02rCnvZhJ1xpf15kx2./u.7VvHvD8p7WPKk6wbDzKoahAY5hElfze', 'employee');
+(75, 'admin1', '$2y$10$OG8zc424qmRTVjeUuo17yOS3XNsKke5d4gzlFHNYAXc9S1L9cujKu', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -184,9 +153,7 @@ ALTER TABLE `item`
 -- Indexes for table `modification`
 --
 ALTER TABLE `modification`
-  ADD PRIMARY KEY (`modification_id`),
-  ADD KEY `modification_to_item` (`item_id`),
-  ADD KEY `modification_to_result` (`result_id`);
+  ADD PRIMARY KEY (`modification_id`);
 
 --
 -- Indexes for table `profile`
@@ -194,12 +161,6 @@ ALTER TABLE `modification`
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`profile_id`),
   ADD KEY `profile_to_user` (`user_id`);
-
---
--- Indexes for table `result`
---
-ALTER TABLE `result`
-  ADD PRIMARY KEY (`result_id`);
 
 --
 -- Indexes for table `user`
@@ -216,13 +177,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `modification`
@@ -234,19 +195,13 @@ ALTER TABLE `modification`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
-
---
--- AUTO_INCREMENT for table `result`
---
-ALTER TABLE `result`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- Constraints for dumped tables
@@ -257,13 +212,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `item`
   ADD CONSTRAINT `item_to_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
-
---
--- Constraints for table `modification`
---
-ALTER TABLE `modification`
-  ADD CONSTRAINT `modification_to_item` FOREIGN KEY (`item_id`) REFERENCES `item` (`item_id`),
-  ADD CONSTRAINT `modification_to_result` FOREIGN KEY (`result_id`) REFERENCES `result` (`result_id`);
 
 --
 -- Constraints for table `profile`

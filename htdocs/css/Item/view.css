@@ -1,41 +1,62 @@
-body{
-	background-color: rgba(207, 207, 207, 1);
+.lightBackground1{
+    background-color: lightgreen;
+    position: absolute;
+    width: 48%;
+    max-height: 70.5%;
+    height: auto;
+    left: 51%;
+    top: 20%;
 }
 
-.lightBackground{
-	background-color: rgba(217, 217, 217, 1);
-	position: absolute;
-	width: 75%;
-	height: 75%;
-	left: 13%;
-	top: 20%;
+.lightBackground2{
+    background-color: lightcoral;
+    position: absolute;
+    width: 48%;
+    max-height: 70.5%;
+    height: auto;
+    margin-left: 1%;
+    top: 20%;
 }
 
-.title{
-	margin-left: 35%;
-	text-align: center;
-	height: 10%;
-	width: 30%;
-	display: inline-block;
-	font-size: 6px;
-	margin-top: 3%;
-}
-
-table {
-    width: 100%;
-    display:block;
-}
-
-th, td {
-    width:550px;
+.titleItem{
+    margin-left: 8%;
+    margin-right: 15%;
     text-align: center;
-    padding: 5px;
+    height: 10%;
+    width: 30%;
+    display: inline-block;
+    font-size: 6px;
+    margin-top: 3%;
 }
 
-tbody {
-	background-color: white;
-    height: 320px;
+.titleSelling{
+    margin-left: 15%;
+    margin-right: 24%;
+    text-align: center;
+    height: 10%;
+    width: 60%;
     display: inline-block;
-    width: 100%;
-    overflow: auto;
+    font-size: 6px;
+    margin-top: 3%;
+}
+
+
+#filters{
+	width: 200px;
+	display: inline-block;
+	margin-left: 2%;
+}
+
+.total{
+	margin-left: 5.5%;
+    margin-top: 2%;
+	width: 60%;
+	margin-top: 1.5%;
+	display: inline-block;
+}
+.profit{
+	margin-left: 5.3%;
+	width: 66%;
+	margin-top: 1%;
+	display: inline-block;
 }
