@@ -18,23 +18,43 @@
                 <span>Employees</span>
             </a>
           ';
+    } else{
+      echo '
+            <a  href ="">
+            </a>
+          ';
     }
   ?>
-
-  <img class="logo" src="/images/logo.png" alt="Logo" />
+  <a  href ="/Item/index">
+   <img class="logo" src="/images/logo.png" alt="Logo" />
+  </a>
 
   <a  href ="/Profile/edit">
     <i class="fa fa-user"></i>
     <span>Profile</span>
   </a>
-        
-  <a  href ="">
-    <span><i class="fa fa-bell"></i></span>
-    <span>Notification</span>
-  </a>
 
-  <a  href ="/User/logout">
-    <span><i class="fa fa-power-off"></i></span>
-    <span>Logout</span>
-  </a>
-</div> 
+  <div id="notifB" >
+        <a  id='notif' href ="">
+          <i class="fa fa-bell"></i>
+          <span>Notification</span>
+        </a>   
+         
+        <div id='hide'>
+                <?php
+                  foreach($data['lowStock'] as $item){
+                    echo"<p>$item->item_name has $item->qty left</p>
+                         <hr>
+                    ";
+
+                  }
+                ?>
+        </div>
+      </div>
+
+      <a  href ="/User/logout">
+      <span><i class="fa fa-power-off"></i></span>
+      <span>Logout</span>
+      </a>
+  </div>
+</div>

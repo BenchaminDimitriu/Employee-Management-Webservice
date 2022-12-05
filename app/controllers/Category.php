@@ -7,10 +7,10 @@ class Category extends \app\core\Controller{
 		$category = new \app\models\Category();
 		$categorys = $category->getAll();
 
-		$category = new \app\models\Category();
-		$emptyCat = $category->getAllEmpty();
+		$item = new \app\models\Item();
+	 	$lowStock = $item->getAllLow();
 
-		$this->view('Category/index', ['category'=>$categorys, 'emptyCat'=>$emptyCat]);
+		$this->view('Category/index', ['categorys'=>$categorys, 'lowStock'=>$lowStock]);
 	}
 
 	#[\app\filters\Login]
@@ -18,8 +18,8 @@ class Category extends \app\core\Controller{
 		if($_POST['name'] == ''){
 			header('location:/Category/index?error=Please enter the category name');
 		} else{
-			$category= new \app\models\Category();
-			$category = $category->getName($name);
+			$categoryCheck= new \app\models\Category();
+			$categoryCheck = $categoryCheck->getName($name);
 
 			if($category != null){
 				header('location:/Category/index?error=Category name already taken');
@@ -34,21 +34,22 @@ class Category extends \app\core\Controller{
 	}
 
 	#[\app\filters\Login]
- 	public function edit($name, $category_id){
-		if($name == 'null'){
-			header('location:/Category/index?error=Category name cannot be blank');
+ 	public function edit($category_id){
+ 		echo 'hello';
+		if($_POST['name'] == 'null'){
+			//header('location:/Category/index?error=Category name cannot be blank');
 		} else{
-			$category= new \app\models\Category();
-			$category = $category->getName($name);
+			$categorys = new \app\models\Category();
+			$categorys = $categorys->getName($_POST['name']);
 
-			if($category != null){
-				header('location:/Category/index?error=Category name already taken');
+			if($categorys != null){
+			//	header('location:/Category/index?error=Category name already taken');
 			} else{
 				$category= new \app\models\Category();
 				$category = $category->get($category_id);
-				$category->name = $name;
+				$category->name = $_POST['name'];
 				$category->update();
-				header('location:/Category/index');
+			//	header('location:/Category/index?message=Category was updated');
 			}
 		}	
 	}
@@ -68,5 +69,11 @@ class Category extends \app\core\Controller{
 				$category->delete();
 				header('location:/Category/index?error=Category Deleted');
 			}	
-	 }
+	}
+
+	public function populateNav(){
+		$item = new \app\models\Item();
+	 	$items = $item->getAllLow();
+	 	$this->view('nav', $items);
+	} 
 }

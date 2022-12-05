@@ -1,25 +1,12 @@
-body{
-	background-color: rgba(207, 207, 207, 1);
-}
-
-.lightBackground{
-	background-color: rgba(217, 217, 217, 1);
-	position: absolute;
-	width: 75%;
-	height: 75%;
-	left: 13%;
-	top: 20%;
-}
-
-.title{
-	margin-left: 15%;
-	margin-right: 22%;
-	text-align: center;
-	height: 10%;
-	width: 30%;
-	display: inline-block;
-	font-size: 6px;
-	margin-top: 3%;
+.titleItem{
+    margin-left: 15%;
+    margin-right: 24%;
+    text-align: center;
+    height: 10%;
+    width: 30%;
+    display: inline-block;
+    font-size: 6px;
+    margin-top: 3%;
 }
 
 #filters{
@@ -28,30 +15,15 @@ body{
 	margin-left: 2%;
 }
 
-table {
-    width: 100%;
-    display:block;
+.total{
+	margin-left: 5.5%;
+	width: 60%;
+	margin-top: 1.5%;
+	display: inline-block;
 }
-
-th, td {
-    width:550px;
-    text-align: center;
-    padding: 5px;
-}
-
-tbody {
-	background-color: white;
-    height: 320px;
-    display: inline-block;
-    width: 100%;
-    overflow: auto;
-}
-
-th{
-	width: 6%;
-	border: solid 2px blue;
-}
-
-td{
-	border: solid 2px;
+.profit{
+	margin-left: 5.3%;
+	width: 66%;
+	margin-top: 1%;
+	display: inline-block;
 }

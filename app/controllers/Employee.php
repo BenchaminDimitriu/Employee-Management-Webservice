@@ -7,20 +7,23 @@ class Employee extends \app\core\Controller{
 		$employee = new \app\models\Profile();
 		$employees = $employee->getAllUserProfile();
 
-		$this->view('Employee/index', ['employee'=>$employees]);
+		$item = new \app\models\Item();
+	 	$lowStock = $item->getAllLow();
+
+		$this->view('Employee/index', ['employee'=>$employees, 'lowStock'=>$lowStock]);
 	}
 
 	public function add(){
 		if(isset($_POST['action'])){
 			if($_POST['username'] == "" || $_POST['password'] == ""){
-				header('location:/Employee/add?error=Please enter username and password');
+				header('location:/Employee/index?error=Please enter username and password');
 			} else{
 					
 					$user = new \app\models\User();
 					$user = $user->get($_POST['username']);
 
 					if($user != null){
-						header('location:/Employee/add?error=Username already taken');
+						header('location:/Employee/index?error=Username already taken');
 					} else{
 						$employee = new \app\models\User();
 						$employee->username = $_POST['username'];
@@ -34,8 +37,6 @@ class Employee extends \app\core\Controller{
 						header('location:/Employee/index?message=Employee created');
 					}
 			}
-		} else{
-			$this->view('/Employee/add');
 		}
 	}
 }

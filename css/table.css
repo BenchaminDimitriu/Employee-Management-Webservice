@@ -1,0 +1,50 @@
+body{
+    background-color: rgba(207, 207, 207, 1);
+}
+
+.lightBackground{
+    background-color: rgba(217, 217, 217, 1);
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    left: 13%;
+    top: 20%;
+}
+
+.title{
+    margin-left: 35%;
+    text-align: center;
+    height: 10%;
+    width: 30%;
+    display: inline-block;
+    font-size: 6px;
+    margin-top: 3%;
+}
+
+#addButton{
+    margin-left: 17%;
+}
+
+.fixTableHead {
+  overflow-y: auto;
+  height: 360px;
+  background-color: white;
+}
+.fixTableHead thead th {
+    position: sticky;
+}
+
+table {
+    border-collapse: collapse;        
+    width: 100%;
+    background-color: white;
+}	
+
+th, td {
+	text-align: center;
+    padding: 8px 15px;
+}
+
+th {
+   background: lightgray;
+}
