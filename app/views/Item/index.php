@@ -95,10 +95,7 @@
         
         <br>
 
-        <div class='profit'>
-        <span>Profit</span>
-        <span style='font-weight:bold; color: green; margin-left: 60%;'>$<?= $totalS-$totalP ?></span>
-        </div>
+        
       </div>
 
        <div class='lightBackground2'>
@@ -154,6 +151,11 @@
           <span>Total discount</span>
           <span style='font-weight:bold; margin-left: 38%;'>$<?= $totalP ?></span>
           <span style='font-weight:bold; margin-left: 12%;'>$<?= $totalS ?></span>
+        </div>
+
+        <div class='profit'>
+        <span>Profit</span>
+        <span style='font-weight:bold; color: green; margin-left: 60%;'>$<?= $totalS-$totalP ?></span>
         </div>
       </div>
     </div>

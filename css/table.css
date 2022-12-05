@@ -27,7 +27,7 @@ body{
 
 .fixTableHead {
   overflow-y: auto;
-  height: 360px;
+  min-height: 360px;
   background-color: white;
 }
 .fixTableHead thead th {

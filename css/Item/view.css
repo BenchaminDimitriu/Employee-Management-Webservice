@@ -2,7 +2,8 @@
     background-color: lightgreen;
     position: absolute;
     width: 48%;
-    height: 75%;
+    min-height: 70.5%;
+    height: auto;
     left: 51%;
     top: 20%;
 }
@@ -11,7 +12,7 @@
     background-color: lightcoral;
     position: absolute;
     width: 48%;
-    height: 75%;
+    height: auto;
     margin-left: 1%;
     top: 20%;
 }
@@ -47,6 +48,7 @@
 
 .total{
 	margin-left: 5.5%;
+    margin-top: 2%;
 	width: 60%;
 	margin-top: 1.5%;
 	display: inline-block;
