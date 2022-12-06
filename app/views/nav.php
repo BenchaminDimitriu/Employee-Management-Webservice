@@ -50,7 +50,7 @@
                   }
                 ?>
         </div>
-      </div>
+    </div>
 
       <a  href ="/User/logout">
       <span><i class="fa fa-power-off"></i></span>

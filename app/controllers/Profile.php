@@ -31,6 +31,7 @@ class Profile extends \app\core\Controller{
 					header('location:/Profile/edit?error=Username already talen');
 					return;
 				}else{
+			 		$_SESSION['username'] = $_POST['username'];
 					$user->username = $_POST['username'];
 					$user->update();
 					header('location:/Profile/edit?message=Username has been updated');

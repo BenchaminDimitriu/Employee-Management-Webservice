@@ -39,6 +39,9 @@ function sendName(category_id){
   $.ajax({
     type: "POST",
     url: "/Category/edit/" + category_id,
-    data: { name : newName }
+    data: { name : newName },
+    success: function() {
+        window.location.href = "/Category/index?message=Category was updated";
+    }  
   })
 };

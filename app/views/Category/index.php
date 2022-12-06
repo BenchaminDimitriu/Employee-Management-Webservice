@@ -46,7 +46,7 @@
                   {
                     echo" 
                         <tr>
-                          <td><input class='catName' value='$item->name' onfocusout='sendName($item->category_id)'></input></td>
+                          <td><input style='border:none; text-align:center;' class='catName' value='$item->name' onfocusout='sendName($item->category_id)'></input></td>
                           <td id='totalS'>$item->totalS</td>
                           <td>$item->totalP</td>
                           <td><button onclick='confirm($item->category_id)' class='btn btn-danger' id='dele teBut'>Delete</button></td>

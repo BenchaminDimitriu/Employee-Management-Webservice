@@ -10,6 +10,7 @@ class Category extends \app\core\Controller{
 		$item = new \app\models\Item();
 	 	$lowStock = $item->getAllLow();
 
+
 		$this->view('Category/index', ['categorys'=>$categorys, 'lowStock'=>$lowStock]);
 	}
 
@@ -35,20 +36,22 @@ class Category extends \app\core\Controller{
 
 	#[\app\filters\Login]
  	public function edit($category_id){
-			if($_POST['name'] == ''){
-				header('location:/Category/index?error=Category name cannot be blank');
-			} else{
-				$category = new \app\models\Category();
-				$category = $category->getName($_POST['name']);
+		if($_POST['name'] == ''){
+			echo'location:/Category/index?error=Category name cannot be blank';
+		} else{
+			$category = new \app\models\Category();
+			$category = $category->getName($_POST['name']);
 
-				if($categorys != null){
-					header('location:/Category/index?error=Category name already taken');
-				} else{
-					$category->name = $_POST['name'];
-					$category->update();
-					header('location:/Category/index?message=Category was updated');
-				}
-			}	
+			if($category){
+				header('location:/Category/index?error=Category name already taken');
+			} else{
+				$categoryName = new \app\models\Category();
+				$categoryName->category_id = $category_id;
+				$categoryName->name = $_POST['name'];
+				$categoryName->update();
+				//header('location:/Category/index?message=Category was updated');
+			}
+		} 		
 	}
 
 
@@ -59,7 +62,7 @@ class Category extends \app\core\Controller{
 
 			$item = new \app\models\Item();
 			$items = $item->getAllForCat($category_id);
-
+			
 			if($items != null){
 				header('location:/Category/index?error=Cannot delete, still items in category');
 			} else{

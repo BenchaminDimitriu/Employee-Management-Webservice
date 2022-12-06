@@ -13,10 +13,11 @@ function categoryChoose(){
 
 //To show modal, when user wants to add
 function modalPop(){
+  var item_idP;
   var modal = $('.modal');
   var cancel = $("#cancel");
 
-    $('.mbtn').click(function(e){
+    $('.addButton').click(function(e){
       $('#replyFrm').attr('action', '/Item/add');
         modal.show();
         $('.modal' ).addClass('open' ); 
@@ -25,6 +26,21 @@ function modalPop(){
         $('.lightBackground' ).addClass('blur' );
         }
     });
+
+    // $('.editButton').click(function(e){
+    //   item_idP = $(this).attr('item_id');
+    //   $('#replyFrm').attr('action', '/Item/edit' + item_id);
+    //     modal.show();
+    //     $('.modal' ).addClass('open' ); 
+    //     if ( $('.modal' ).hasClass('open' ) ) {
+    //       $('.mainContainer' ).addClass('blur' );
+    //       $('.lightBackground' ).addClass('blur' );
+    //     }
+    //     $.ajax({
+    //     url: '/Item/edit' + item_id,
+    //     method:"POST",
+    //     data:{item_id : item_idP)});
+    // });
 
     cancel.on('click', function(){
       modal.hide();

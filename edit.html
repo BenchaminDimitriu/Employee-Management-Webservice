@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <!-- Imports -->
+      <?php $this->view('header'); ?>
+
+    <!-- Js -->
+      <script type="text/javascript" src="/js/category.js"></script>
+    
+    <title>Category</title>
+  </head>
+
+  <body>
+    <form action='/Category/edit/30' method="post" id="replyFrm">
+              <div class="form-group" style='margin-bottom: 5%;'>
+                <label>Name</label>
+                <input type='text' class='form-control' name="name">
+              </div>
+
+              <div class="modal-footer" style='background-color: silver;'>
+                <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
+            </div>  
+          </form>
+        </body>
+        </html>

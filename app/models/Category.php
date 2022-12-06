@@ -13,12 +13,12 @@ class Category extends \app\core\Models{
 		$SQL = "UPDATE category SET name=:name WHERE category_id=:category_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(
-			['name'=>$this->_name,
+			['name'=>$this->name,
 			 'category_id'=>$this->category_id]);
 	}
 		//Used in Item Index
-	public function getAllWithItems(){
-		$SQL = "SELECT category.* FROM category JOIN item ON item.category_id=category.category_id GROUP BY category_id";
+	public function getAllCat(){
+		$SQL = "SELECT category.* FROM category";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');

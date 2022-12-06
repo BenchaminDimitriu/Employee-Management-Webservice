@@ -33,7 +33,6 @@
   overflow: auto;
 }
 
-
 #notif:hover + #hide{
   display: block;
   background-color: black;

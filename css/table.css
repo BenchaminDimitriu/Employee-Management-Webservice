@@ -5,8 +5,8 @@ body{
 .lightBackground{
     background-color: rgba(217, 217, 217, 1);
     position: absolute;
-    width: 75%;
-    height: 75%;
+    width: 75%;    
+    max-height: 70.5%;
     left: 13%;
     top: 20%;
 }
@@ -27,11 +27,13 @@ body{
 
 .fixTableHead {
   overflow-y: auto;
-  min-height: 360px;
+  height: 360px;
   background-color: white;
 }
+
 .fixTableHead thead th {
     position: sticky;
+    top: 0;
 }
 
 table {
@@ -46,5 +48,5 @@ th, td {
 }
 
 th {
-   background: lightgray;
+   background: silver;
 }
