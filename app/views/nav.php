@@ -35,23 +35,22 @@
     <span>Profile</span>
   </a>
 
-  <div class="notifB" >
-      <a  class='notif' href ="">
-        <i class="fa fa-bell"></i>
-        <span>Notification</span>
-      </a>   
-       
-      <div class='hide'>
-              <?php
-                foreach($data['lowStock'] as $item){
-                  echo"<p>$item->item_name has $item->qty left</p>
-                       <hr>
-                  ";
+    <div class="notifB" >
+        <a  class='notif' href ="">
+          <i class="fa fa-bell"></i>
+          <span>Notification</span>
+        </a>   
+         <span class='stuff'>
+                <?php
+                  foreach($data['lowStock'] as $item){
+                    echo"<p>$item->item_name has $item->qty left</p>
+                         <hr>
+                    ";
 
-                }
-              ?>
-      </div>
-  </div>
+                  }
+                ?>
+        </span>
+    </div>
 
       <a  href ="/User/logout">
       <span><i class="fa fa-power-off"></i></span>
