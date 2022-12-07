@@ -6,13 +6,14 @@
   
     <!-- Css -->
       <link rel="stylesheet" type="text/css" href="/css/Item/view.css" />
+
 <script type="text/javascript">
   $(document).ready(
           function(){
             var categoryOfProduct = "<?= $data['item']->category_id ?>";
             var category = document.getElementById('category');
-            
-            if(categoryOfProduct == null){
+
+            if(!categoryOfProduct){
               category.value = 'None';
             } else{
               category.value = categoryOfProduct;
@@ -28,6 +29,7 @@
 
   <body>
       
+      <div class='lightBackgroundEdit'>
       <form action='' method="post" id="replyFrm">
             <div class="form-group" style="margin-bottom: 5%;">
                 <label>Name</label>
@@ -72,5 +74,7 @@
                 </label><br>
               </div>
                 <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
+                <a href='/Item/index' class="btn btn-danger">CANCEL</a>
           </form>
+        </div>
 </html>

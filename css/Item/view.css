@@ -20,6 +20,17 @@
     top: 20%;
 }
 
+.lightBackgroundEdit{
+    background-color: silver;
+    position: absolute;
+    min-height: 70.5%;
+    max-height: 75.5%;
+    width: 48%;
+    height: auto;
+    margin-left: 25%;
+    top: 15%;
+}
+
 .titleItem{
     margin-left: 8%;
     margin-right: 15%;
@@ -32,21 +43,22 @@
 }
 
 .titleSelling{
-    margin-left: 19%;
-    margin-right: 24%;
     text-align: center;
-    height: 10%;
-    width: 60%;
     display: inline-block;
     font-size: 6px;
-    margin-top: 3%;
+    padding-top: 3%;
+    padding-left: 5%;
 }
-
 
 #filters{
 	width: 200px;
 	display: inline-block;
     margin-left: 2%;
+}
+
+.filterDate{
+    display: inline-block;
+    padding-left: 1%;
 }
 
 .total{

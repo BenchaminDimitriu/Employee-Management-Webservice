@@ -88,14 +88,27 @@
 
         <!-- Totals -->
         <div class='total'>
-          <span>Total inventory</span>
-          <span style='font-weight:bold; margin-left: 20%;'>$<?= $totalP ?></span>
+          <span>Total inventory : </span>
+          <span style='font-weight:bold;'>$<?= $totalP ?></span>
         </div>
         <br>
       </div>
 
        <div class='lightBackground2'>
-      
+        
+        <div class='filterDate'>
+          <form method="post" id="dateFrm">
+              <div class="form-group" style=" display: inline-block;">
+                <input type="number" min='1' max='12' class="form-control" name="month"  placeholder="Month">
+              </div>
+              <div class="form-group" style="max-width: 90px; display: inline-block;">
+                <input type="number" min='1970' class="form-control" name="year" placeholder="Year">
+              </div>
+
+              <button type="submit" name='action' id="dateFrm" class="btn btn-primary">Filter</button>
+          </form>
+        </div>
+
         <div class='titleSelling' >
           <h1>Selling Summary</h1> 
         </div> 
@@ -171,13 +184,13 @@
 
         <!-- Totals -->
         <div class='total'>
-          <span>Total discount</span>
-          <span style='font-weight:bold; margin-left: 47.5%;'><?= "$" . $totalDiscount?></span>
+          <span>Total discount : </span>
+          <span style='font-weight:bold;'><?= "$" . $totalDiscount?></span>
         </div>
 
         <div class='profit'>
-        <span>Total profit</span>
-        <span style='font-weight:bold; color: green; margin-left: 48%;'>$<?= $totalProfit ?></span>
+        <span>Total profit : </span>
+        <span style='font-weight:bold; color: green;'>$<?= $totalProfit ?></span>
         </div>
       </div>
     </div>

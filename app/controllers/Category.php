@@ -49,7 +49,7 @@ class Category extends \app\core\Controller{
 				$categoryName->category_id = $category_id;
 				$categoryName->name = $_POST['name'];
 				$categoryName->update();
-				//header('location:/Category/index?message=Category was updated');
+				header('location:/Category/index?message=Category was updated');
 			}
 		} 		
 	}

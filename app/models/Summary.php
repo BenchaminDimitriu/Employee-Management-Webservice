@@ -22,4 +22,12 @@ class Summary extends \app\core\Models{
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Summary');
 		return $STMT->fetchAll();
 	}
+
+	public function getFilter($month, $year){
+		$SQL = "SELECT * FROM summary WHERE month(`date`)=$month AND year(`date`)=$year ORDER BY `date`, item_name";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Summary');
+		return $STMT->fetchAll();
+	}
 }

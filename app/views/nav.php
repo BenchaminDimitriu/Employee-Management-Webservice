@@ -36,10 +36,10 @@
   </a>
 
     <div class="notifB" >
-        <a  class='notif' href ="">
+        <p  class='notif' href ="">
           <i class="fa fa-bell"></i>
           <span>Notification</span>
-        </a>   
+        </p>   
          <span class='stuff'>
                 <?php
                   foreach($data['lowStock'] as $item){

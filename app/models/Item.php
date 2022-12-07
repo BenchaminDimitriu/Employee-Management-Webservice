@@ -26,7 +26,7 @@ class Item extends \app\core\Models{
 	}
 
 	public function getAll(){
-		$SQL = "SELECT item.*, category.name FROM item JOIN category ON category.category_id = item.category_id";
+		$SQL = "SELECT item.*, category.name FROM item LEFT JOIN category ON category.category_id = item.category_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Item');

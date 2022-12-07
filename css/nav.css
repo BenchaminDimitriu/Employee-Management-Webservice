@@ -11,6 +11,7 @@
   color: white;
   display: inline-block;
   padding: 20px;
+  margin-bottom: 30px;
 }
 
 .navbar a:hover {
@@ -21,8 +22,19 @@
   display: none;
 }
 
+.notifB{
+  margin-top: 50px;
+  color:white;
+  height: 100px;
+}
+
+.notifB:hover{
+  color: rgba(163, 14, 14, 1);
+}
+
 .notifB:hover .stuff{
-   display: block;
+  margin-top: 110px;
+  display: block;
   cursor: pointer;
   background-color: black;
   padding: 3px;
@@ -32,6 +44,6 @@
   position: absolute;
   width: 150px;
   left: auto;
-  max-height: 250px;
+  max-height: 200px;
   top:35px;
   overflow: auto;
