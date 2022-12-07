@@ -34,13 +34,13 @@
     <span>Profile</span>
   </a>
 
-  <div id="notifB" >
-        <a  id='notif' href ="">
+
+    <div class="notifB" >
+        <a  class='notif' href ="">
           <i class="fa fa-bell"></i>
           <span>Notification</span>
         </a>   
-         
-        <div id='hide'>
+         <span class='stuff'>
                 <?php
                   foreach($data['lowStock'] as $item){
                     echo"<p>$item->item_name has $item->qty left</p>
@@ -49,7 +49,7 @@
 
                   }
                 ?>
-        </div>
+        </span>
     </div>
 
       <a  href ="/User/logout">

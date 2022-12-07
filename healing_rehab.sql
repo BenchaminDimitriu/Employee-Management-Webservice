@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 03:22 PM
+-- Generation Time: Dec 06, 2022 at 04:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,7 +40,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `name`) VALUES
-(30, ''),
+(30, 'Cream'),
 (36, 'Oils');
 
 -- --------------------------------------------------------
@@ -64,29 +64,9 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `qty`, `Pprice`, `Sprice`, `category_id`) VALUES
-(36, 'Sun screen', 2, 99.99, 200.99, 30),
-(37, 'La neige', 5, 34.99, 50.99, 36),
-(38, 'Exfoliator', 10, 12.99, 2.99, 30),
-(56, 'test', 1, 1, 1, 36),
-(57, 'h', 1, 1, 1, 36);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `modification`
---
-
-DROP TABLE IF EXISTS `modification`;
-CREATE TABLE `modification` (
-  `modification_id` int(11) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
-  `item_name` varchar(50) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `discount` int(11) DEFAULT NULL,
-  `sellingP` float NOT NULL,
-  `purchaseP` float NOT NULL,
-  `username` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(36, 'Sun screen', 20, 199.99, 69.99, 36),
+(37, 'La neige', 18, 34.99, 50.99, 36),
+(38, 'Exfoliator', 1, 12.99, 2.99, 30);
 
 -- --------------------------------------------------------
 
@@ -113,6 +93,24 @@ INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `addr
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `summary`
+--
+
+DROP TABLE IF EXISTS `summary`;
+CREATE TABLE `summary` (
+  `summary_id` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `item_name` varchar(50) NOT NULL,
+  `amount` varchar(11) NOT NULL,
+  `discount` int(11) DEFAULT NULL,
+  `sellingP` float NOT NULL,
+  `purchaseP` float NOT NULL,
+  `user` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -129,7 +127,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
-(75, 'admin1', '$2y$10$OG8zc424qmRTVjeUuo17yOS3XNsKke5d4gzlFHNYAXc9S1L9cujKu', 'admin');
+(75, 'admin', '$2y$10$OG8zc424qmRTVjeUuo17yOS3XNsKke5d4gzlFHNYAXc9S1L9cujKu', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -150,17 +148,17 @@ ALTER TABLE `item`
   ADD KEY `item_to_category` (`category_id`);
 
 --
--- Indexes for table `modification`
---
-ALTER TABLE `modification`
-  ADD PRIMARY KEY (`modification_id`);
-
---
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`profile_id`),
   ADD KEY `profile_to_user` (`user_id`);
+
+--
+-- Indexes for table `summary`
+--
+ALTER TABLE `summary`
+  ADD PRIMARY KEY (`summary_id`);
 
 --
 -- Indexes for table `user`
@@ -177,25 +175,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
-
---
--- AUTO_INCREMENT for table `modification`
---
-ALTER TABLE `modification`
-  MODIFY `modification_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
   MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
+--
+-- AUTO_INCREMENT for table `summary`
+--
+ALTER TABLE `summary`
+  MODIFY `summary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `user`

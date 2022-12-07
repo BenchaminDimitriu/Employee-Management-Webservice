@@ -17,23 +17,23 @@
   color: rgba(163, 14, 14, 1);
 }
 
-#hide{
+.stuff{
   display: none;
+}
+
+.notifB:hover .stuff{
+   display: block;
+  cursor: pointer;
+  background-color: black;
   padding: 3px;
   border-radius: 10px;
   color: white;
-  background-color: black;
   z-index: 1;
   position: absolute;
   width: 150px;
   left: auto;
-  height: auto;
   max-height: 250px;
-  top: 138px;
+  top:35px;
   overflow: auto;
-}
 
-#notif:hover + #hide{
-  display: block;
-  background-color: black;
 } 
