@@ -23,7 +23,8 @@ function modalPop(){
         $('.modal' ).addClass('open' ); 
         if ( $('.modal' ).hasClass('open' ) ) {
           $('.mainContainer' ).addClass('blur' );
-        $('.lightBackground' ).addClass('blur' );
+          $('.lightBackground1' ).addClass('blur' );
+          $('.lightBackground2' ).addClass('blur' );
         }
     });
 
@@ -46,7 +47,8 @@ function modalPop(){
       modal.hide();
        $( '.modal' ).removeClass( 'open' );
        $( '.mainContainer' ).removeClass( 'blur' );
-       $( '.lightBackground' ).removeClass( 'blur' );
+       $( '.lightBackground1' ).removeClass( 'blur' );
+       $( '.lightBackground2' ).removeClass( 'blur' );
     });
 };
 

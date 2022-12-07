@@ -17,7 +17,7 @@
   color: rgba(163, 14, 14, 1);
 }
 
-#hide{
+.hide{
   display: none;
   padding: 3px;
   border-radius: 10px;
@@ -33,7 +33,7 @@
   overflow: auto;
 }
 
-#notif:hover + #hide{
+.notifB:hover .hide{
   display: block;
   background-color: black;
 } 

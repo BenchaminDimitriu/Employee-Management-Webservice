@@ -3,7 +3,7 @@
   <a  href ="/Item/index">
     <i class="fa-solid fa-boxes-stacked"></i>
     <span>Item</span>
-    </a>
+  </a>
 
   <a  href ="/Category/index">
     <span><i class="fa-solid fa-bookmark"></i></span>
@@ -25,6 +25,7 @@
           ';
     }
   ?>
+
   <a  href ="/Item/index">
    <img class="logo" src="/images/logo.png" alt="Logo" />
   </a>
@@ -34,27 +35,27 @@
     <span>Profile</span>
   </a>
 
-  <div id="notifB" >
-        <a  id='notif' href ="">
-          <i class="fa fa-bell"></i>
-          <span>Notification</span>
-        </a>   
-         
-        <div id='hide'>
-                <?php
-                  foreach($data['lowStock'] as $item){
-                    echo"<p>$item->item_name has $item->qty left</p>
-                         <hr>
-                    ";
+  <div class="notifB" >
+      <a  class='notif' href ="">
+        <i class="fa fa-bell"></i>
+        <span>Notification</span>
+      </a>   
+       
+      <div class='hide'>
+              <?php
+                foreach($data['lowStock'] as $item){
+                  echo"<p>$item->item_name has $item->qty left</p>
+                       <hr>
+                  ";
 
-                  }
-                ?>
-        </div>
-    </div>
+                }
+              ?>
+      </div>
+  </div>
 
       <a  href ="/User/logout">
       <span><i class="fa fa-power-off"></i></span>
       <span>Logout</span>
       </a>
-  </div>
+</div>
 </div>

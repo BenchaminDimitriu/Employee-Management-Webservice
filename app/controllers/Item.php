@@ -67,31 +67,36 @@ class Item extends \app\core\Controller{
 				$item->Sprice = $_POST['sellingP'];
 				$item->category_id = $category->category_id;
 
-				if($_POST['qty'] != $item->qty){
+				if($_POST['qtyS'] != $item->qty || $_POST['qtyP'] != $item->qty){
 					$summary = new \app\models\Summary();
-
 					if($_POST['qtyS'] != ''){
-						$summary->amount = "-" . $_POST['qtyS'];
+						$summary->amount = "- " . $_POST['qtyS'];
 						$summary->item_name = $_POST['name']; 
 						$summary->discount = $_POST['discount']; 
-						$summary->purchaseP = $_POST['purchaseP']; 
-						$summary->sellingP = $_POST['sellingP']; 
+						$summary->purchaseP = round($_POST['purchaseP'], 2);
+						if($_POST['discount'] != ""){
+							$discountedPrice = $_POST['sellingP'] * ($_POST['discount'] / 100);
+							$summary->sellingP = round($_POST['sellingP'] - $discountedPrice, 2); 
+						} else{
+							$summary->sellingP = round($_POST['sellingP'], 2);
+						} 
+						$summary->originalSP = $_POST['sellingP'];
 						$summary->user = $_SESSION['username'];
 						$summary->insert();
 						$item->qty = $item->qty - $_POST['qtyS']; 
 					}
 					if($_POST['qtyP'] != ''){
-						$summary->amount = "+" . $_POST['qtyP'];
+						$summary->amount = "+ " . $_POST['qtyP'];
 						$summary->discount = null; 
 						$summary->item_name = $_POST['name'];  
+						$summary->originalSP = $_POST['sellingP'];
+						$summary->sellingP = null;
 						$summary->purchaseP = $_POST['purchaseP']; 
-						$summary->sellingP = $_POST['sellingP']; 
 						$summary->user = $_SESSION['username'];
 						$summary->insert();
 						$item->qty = $_POST['qtyP'] + $item->qty; 
 					}
 				}
-
 				$item->update();
 				header('location:/Item/index?message=Item updated');
 			}
@@ -104,10 +109,13 @@ class Item extends \app\core\Controller{
 	public function remove($item_id){
 			$item = new \app\models\Item();
 			$item = $item->get($item_id);
-
-			$item->delete();
+			if($item->qty != 0){
+				header('location:/Item/index?error=Item still has quantities');
+			}else{
+				$item->delete();
+				header('location:/Item/index?message=Item deleted');
+			}
 			
-			header('location:/Item/index?error=Item deleted');
 	}
 
 	public function filterCategory($category_id){

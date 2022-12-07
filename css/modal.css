@@ -33,6 +33,10 @@
   filter: blur(4px);
 }
 
-.lightBackground.blur {
+.lightBackground1.blur {
+  filter: blur(4px);
+}
+
+.lightBackground2.blur {
   filter: blur(4px);
 }

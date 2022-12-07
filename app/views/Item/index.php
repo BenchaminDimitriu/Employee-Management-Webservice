@@ -78,7 +78,7 @@
                         <td><button onclick='confirm($item->item_id)' class='btn btn-danger' id='deleteBut'>Delete</button></td>
                       </tr>
                     ";
-                    $totalP += $item->Pprice;
+                    $totalP += $item->Pprice * $item->qty;
                     $totalS += $item->Sprice;
                 }
               ?>
@@ -88,14 +88,10 @@
 
         <!-- Totals -->
         <div class='total'>
-          <span>Total</span>
-          <span style='font-weight:bold; margin-left: 38%;'>$<?= $totalP ?></span>
-          <span style='font-weight:bold; margin-left: 12%;'>$<?= $totalS ?></span>
+          <span>Total inventory</span>
+          <span style='font-weight:bold; margin-left: 20%;'>$<?= $totalP ?></span>
         </div>
-        
         <br>
-
-        
       </div>
 
        <div class='lightBackground2'>
@@ -115,7 +111,7 @@
                 <th>PRODUCT NAME</th>
                 <th>MODIFICATION</th>
                 <th>DISCOUNT</th>
-                <th>SELLING PRICE</th>
+                <th>SOLD PRICE</th>
                 <th>PURCHASE PRICE</th>
                 <th>USER</th>
               </tr>
@@ -124,8 +120,8 @@
             <tbody>
               
               <?php
-                $totalS = 0;
-                $totalP = 0;
+                $totalDiscount = 0;
+                $totalProfit = 0;
                 foreach($data['summary'] as $item)
                 { 
                   echo" 
@@ -136,19 +132,37 @@
                   if($item->discount != null){
                     echo"<td style='color:red;'>$item->amount</td>
                          <td style='color:red;'>$item->discount%</td>";
-                  } else{
+
+                    $amount = preg_split('/-/', $item->amount);
+                    $totalDiscount += ((int) $amount[1] * $item->originalSP) - ((int) $amount[1] * $item->sellingP);
+                  
+                  } else if($item->discount == "0"){
+                    echo"<td style='color:red;'>$item->amount</td>
+                         <td></td>";
+                  
+                  } else {
                     echo"
                           <td style='color:green;'>$item->amount</td>
                           <td></td>";
                   }
-                  echo"
-                        <td>$item->sellingP</td>
-                        <td>$item->purchaseP</td>
+
+                  if($item->sellingP != null){
+                    echo"
+                        <td>$$item->sellingP</td>";
+                  } else{
+                    echo "<td></td>";
+                  }
+                    echo"
+                        <td>$$item->purchaseP</td>
                         <td>$item->user</td>
                       </tr>
                   ";
-                    $totalP += $item->purchaseP;
-                    $totalS += $item->sellingP;
+
+                  if($item->discount == "0" || $item->discount != null){
+                    $amount = preg_split('/-/', $item->amount);
+                    $totalProfit += ($item->sellingP - $item->purchaseP) * (int) $amount[1];
+                  }
+                 
                 }
               ?>
             </tbody>
@@ -158,12 +172,12 @@
         <!-- Totals -->
         <div class='total'>
           <span>Total discount</span>
-          <span style='font-weight:bold; margin-left: 38%;'>$<?= $totalS?></span>
+          <span style='font-weight:bold; margin-left: 47.5%;'><?= "$" . $totalDiscount?></span>
         </div>
 
         <div class='profit'>
-        <span>Profit</span>
-        <span style='font-weight:bold; color: green; margin-left: 60%;'>$<?= $totalS-$totalP ?></span>
+        <span>Total profit</span>
+        <span style='font-weight:bold; color: green; margin-left: 48%;'>$<?= $totalProfit ?></span>
         </div>
       </div>
     </div>
@@ -197,15 +211,6 @@
                 <label>Selling price</label>
                 <input type="number" min="0" step="0.01" class="form-control" name="Sprice">
               </div>
-<!-- 
-                if(isset($_POST['editButton'])){
-                  echo'
-                    <div class="form-group" style="margin-bottom: 5%;">
-                      <label>Discount</label>
-                      <input type="number" min="0" class="form-control" name="discount">
-                    </div>
-                  ';
-                } -->
 
               <div style="margin-bottom: 5%;">
                 <label>Category:
@@ -221,6 +226,7 @@
                   </select>
                 </label><br>
               </div>
+            </div>
               <div class="modal-footer" style='background-color: silver;'>
                 <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
                 <p id='cancel' class="btn btn-danger">CANCEL</p>
@@ -228,4 +234,5 @@
           </form>
       </p>
     </div>
+  </div>
 </html>
