@@ -175,7 +175,6 @@
                     $amount = preg_split('/-/', $item->amount);
                     $totalProfit += ($item->sellingP - $item->purchaseP) * (int) $amount[1];
                   }
-                 
                 }
               ?>
             </tbody>

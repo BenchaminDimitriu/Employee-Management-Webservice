@@ -21,7 +21,7 @@
   width: 415px;
 }
 
-#username{
+#usernames{
   margin-top: 45px;
   border: none;
   outline: none;
@@ -76,7 +76,7 @@
   width: 231px;
 }
 
-.frame-525 .title {
+.frame-525 .titles {
   color: var(--black);
   font-family: var(--font-family-rounded_mplus_1c-regular);
   font-size: var(--font-size-xxl);

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <!-- Imports -->
@@ -28,7 +27,7 @@
       
           <hr>
 
-            <!-- Table of employees -->
+          <!-- Table of employees -->
             <div class="fixTableHead">
               <table>
                 <thead>
@@ -58,34 +57,42 @@
                 </tbody>
               </table>
             </div>
+            
+            <p style="margin-left: 2%; color:rgba(163, 14, 14, 1);;">*Notice: Only employee can edit their profile*</p>
+           
         </div>
       </div>
   </body>
+
 <!-- Modal -->
   <div class="modal">
     <div class="content" style="background-color: black; color: white;">
       <h1> Add an Employee</h1>
-      <p>
         <form method="post" id="replyFrm">
-            <div class="modal-body" style='background-color: silver; color: black;'>
-              <div class="response"></div>
+          <div class="modal-body" style='background-color: silver; color: black;'>
+            <div class="response"></div>
 
-              <div class="form-group" style='margin-bottom: 5%;'>
-                <label for="username">Enter Username</label>
-                <input type="text" class="form-control" id="username" name="username">
-              </div>
-
-              <div class="form-group">
-                <label for="password">Enter password</label>
-                <input type="password" class="form-control" id="password" name="password">
-              </div>
+            <div class="form-group" style='margin-bottom: 5%;'>
+              <label for="username">Enter Username</label>
+              <input type="text" class="form-control" name="username">
             </div>
-              <div class="modal-footer" style='background-color: silver;'>
-                <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
-                <p id='cancel' class="btn btn-danger">CANCEL</p>
-            </div>  
-          </form>
-      </p>
+
+            <div class="form-group">
+              <label for="password">Enter password</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+
+            <div class="form-group" style='margin-top: 5%;'>
+              <label for="passwordConf">Confirm password</label>
+              <input type="password" class="form-control" name="passwordConf">
+            </div>
+          </div>
+
+          <div class="modal-footer" style='background-color: silver;'>
+            <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
+            <p id='cancel' class="btn btn-danger">CANCEL</p>
+          </div>  
+      </form>
     </div>
   </div>
 </html>

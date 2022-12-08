@@ -21,25 +21,4 @@ class Models{
 
 
 	}
-
-	protected function isValid(){
-		$reflection = new \ReflectionObject($this);
-		$classProperties = $reflection->getProperties();
-		foreach($classProperties as $property){
-			$propertyAttributes = $property->getAttributes();
-			foreach($propertyAttributes as $attribute){
-				$test = $attribute->newInstance();
-				if(!$test->isValidData($property->getValue($this))){
-					return false;
-				}	
-			}
-		}
-		return true;
-	}
-
-	public function __call($method, $arguments){
-		if($this->isValid()){
-			call_user_func_array([$this, $method ], $arguments);
-		}
-	}
 }

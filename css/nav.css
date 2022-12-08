@@ -47,3 +47,17 @@
   max-height: 200px;
   top:35px;
   overflow: auto;
+}
+
+#username{
+  color: white;
+  margin-right: 45%;
+}
+
+#imageLogoAd{
+  margin-left: 8%;
+}
+
+#imageLogoEmp{
+  margin-left: 3%;
+}

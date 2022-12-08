@@ -46,10 +46,10 @@
                 <input type="number" min="0" step="0.01" class="form-control" name="sellingP" value='<?= $data['item']->Sprice ?>'/>
               </div>
                 <label>Quantity sold:</label>
-                <input name="qtyS"/>
+                <input type="number" min="1" name="qtyS"/>
 
                 <label>Quantity purchased:</label>
-                <input name="qtyP">
+                <input type="number" min="1" name="qtyP">
                 
                 <?php echo'
                     <div class="form-group" style="margin-bottom: 5%;">

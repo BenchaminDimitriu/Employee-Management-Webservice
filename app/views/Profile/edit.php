@@ -6,9 +6,6 @@
 
       <!-- Css -->
         <link rel="stylesheet" type="text/css" href="/css/Profile/view.css" />
-      
-      <!-- Javascript Files -->
-      <script type="text/javascript" src="/js/popUp.js"></script>
 
       <title>Profile</title>
   </head>

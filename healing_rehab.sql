@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2022 at 04:59 PM
+-- Generation Time: Dec 07, 2022 at 02:28 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,8 +40,7 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `name`) VALUES
-(30, 'Cream'),
-(36, 'Oils');
+(62, 'Test');
 
 -- --------------------------------------------------------
 
@@ -56,7 +55,7 @@ CREATE TABLE `item` (
   `qty` int(11) NOT NULL,
   `Pprice` float NOT NULL,
   `Sprice` float NOT NULL,
-  `category_id` int(11) NOT NULL
+  `category_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -64,9 +63,11 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`item_id`, `item_name`, `qty`, `Pprice`, `Sprice`, `category_id`) VALUES
-(36, 'Sun screen', 20, 199.99, 69.99, 36),
-(37, 'La neige', 18, 34.99, 50.99, 36),
-(38, 'Exfoliator', 1, 12.99, 2.99, 30);
+(82, 'Advanced Skin Dis', 0, 58.5, 66.12, NULL),
+(84, 'Retexturing Activator 55ml', 0, 65, 73.45, NULL),
+(85, 'Resveratrol BE 30 ml', 13, 99, 111, NULL),
+(86, 'phyto mist 50ml', 26, 44, 49.72, NULL),
+(87, 'UV Physical Tinted SPF 41', 3, 65, 73.45, NULL);
 
 -- --------------------------------------------------------
 
@@ -100,13 +101,21 @@ DROP TABLE IF EXISTS `summary`;
 CREATE TABLE `summary` (
   `summary_id` int(11) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
-  `item_name` varchar(50) NOT NULL,
   `amount` varchar(11) NOT NULL,
   `discount` int(11) DEFAULT NULL,
-  `sellingP` float NOT NULL,
+  `user` varchar(30) NOT NULL,
   `purchaseP` float NOT NULL,
-  `user` varchar(30) NOT NULL
+  `sellingP` float DEFAULT NULL,
+  `item_name` varchar(25) NOT NULL,
+  `originalSP` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `summary`
+--
+
+INSERT INTO `summary` (`summary_id`, `date`, `amount`, `discount`, `user`, `purchaseP`, `sellingP`, `item_name`, `originalSP`) VALUES
+(182, '2022-12-07', '- 8', 0, 'admin', 65, 73.45, 'UV Physical Tinted SPF 41', 73.45);
 
 -- --------------------------------------------------------
 
@@ -175,13 +184,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `profile`
@@ -193,7 +202,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT for table `summary`
 --
 ALTER TABLE `summary`
-  MODIFY `summary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `summary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `user`

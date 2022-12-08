@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <!-- Imports -->
@@ -26,7 +25,7 @@
           <!-- Add Category -->
           <button class=" mbtn btn btn-success" style='margin-left: 18%;'>Add Category</button>
     
-          <hr class='line'>
+          <hr>
 
           <!-- Table of categories -->
           <div class="fixTableHead">
@@ -57,6 +56,9 @@
               </tbody>
             </table>
           </div>
+          
+          <p style="margin-left: 2%; color:rgba(163, 14, 14, 1);;">*Notice: Edit category by clicking the name*</p>
+        
         </div>
       </div>
   </body>
@@ -65,22 +67,21 @@
   <div class="modal">
     <div class="content" style="background-color: black; color: white;">
       <h1> Add a Category</h1>
-      <p>
-        <form method="post" id="replyFrm">
-            <div class="modal-body" style='background-color: silver; color: black;'>
-              <div class="response"></div>
+      <form method="post" id="replyFrm">
+        <div class="modal-body" style='background-color: silver; color: black;'>
+          <div class="response"></div>
 
-              <div class="form-group" style='margin-bottom: 5%;'>
-                <label>Name</label>
-                <input type="text" class="form-control" name="name">
-              </div>
+          <div class="form-group" style='margin-bottom: 5%;'>
+            <label>Name</label>
+            <input type="text" class="form-control" name="name">
+          </div>
 
-              <div class="modal-footer" style='background-color: silver;'>
-                <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
-                <p id='cancel' class="btn btn-danger">CANCEL</p>
-            </div>  
-          </form>
-      </p>
+          <div class="modal-footer" style='background-color: silver;'>
+            <button type="submit" name='action' id="submit" class="btn btn-success">OK</button>
+            <p id='cancel' class="btn btn-danger">CANCEL</p>
+          </div>
+        </div>  
+      </form>
     </div>
   </div>  
 </html>
