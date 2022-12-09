@@ -2,6 +2,7 @@
 function modalPop(){
   var modal = $('.modal');
   var cancel = $("#cancel");
+  var newName;
 
   $('.mbtn').click(function(e){
       $('#replyFrm').attr('action', '/Category/add');
@@ -34,11 +35,10 @@ function confirm(category_id) {
 };
 
 //Used to edit the category
-function sendName(category_id){
-  newName = $('.catName').val();
-  $.ajax({
-    type: "POST",
-    url: "/Category/edit/" + category_id,
-    data: { name : newName }
-  })
-};
+function editCat(category_id){
+  newName = document.querySelector('.catName').value;
+  var form = document.getElementById('catEdit');
+  form.action += '/' + category_id;
+  form.method = 'post';
+  form.submit();
+}

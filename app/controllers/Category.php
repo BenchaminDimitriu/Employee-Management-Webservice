@@ -49,7 +49,7 @@ class Category extends \app\core\Controller{
  	public function edit($category_id){
 		//Verify if the input feild is not empty
 		if($_POST['name'] == ''){
-			echo'location:/Category/index?error=Category name cannot be blank';
+			header('location:/Category/index?error=Category name cannot be blank');
 		} else{
 			//Verify that the name they typed is not already taken
 			$category = new \app\models\Category();

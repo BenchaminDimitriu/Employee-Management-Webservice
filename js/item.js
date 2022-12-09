@@ -11,41 +11,55 @@ function categoryChoose(){
   }
 }
 
-//To show modal, when user wants to add
+//To show modal, when user wants to add or edit
 function modalPop(){
-  var item_idP;
-  var modal = $('.modal');
-  var cancel = $("#cancel");
+  var modalAdd = $('#modalAdd');
+  var modalEdit = $('#modalEdit');
+  var cancel = $(".cancel");
+  var item_id;
 
     $('.addButton').click(function(e){
-      $('#replyFrm').attr('action', '/Item/add');
-        modal.show();
-        $('.modal' ).addClass('open' ); 
-        if ( $('.modal' ).hasClass('open' ) ) {
+      $('#addFrm').attr('action', '/Item/add');
+        modalAdd.show();
+        $('#modalAdd' ).addClass('open' ); 
+        if ( $('#modalAdd' ).hasClass('open' ) ) {
           $('.mainContainer' ).addClass('blur' );
           $('.lightBackground1' ).addClass('blur' );
           $('.lightBackground2' ).addClass('blur' );
         }
     });
 
-    // $('.editButton').click(function(e){
-    //   item_idP = $(this).attr('item_id');
-    //   $('#replyFrm').attr('action', '/Item/edit' + item_id);
-    //     modal.show();
-    //     $('.modal' ).addClass('open' ); 
-    //     if ( $('.modal' ).hasClass('open' ) ) {
-    //       $('.mainContainer' ).addClass('blur' );
-    //       $('.lightBackground' ).addClass('blur' );
-    //     }
-    //     $.ajax({
-    //     url: '/Item/edit' + item_id,
-    //     method:"POST",
-    //     data:{item_id : item_idP)});
-    // });
+    $('.editBtn').click(function(){
+      item_id = $(this).attr('item_id');
+      $('#editFrm').attr('action', '/Item/edit/' + item_id);
+      var item = JSON.parse(this.getAttribute('data-json'));
+
+      document.getElementById('itemName').value = item.item_name;
+      document.getElementById('purchaseP').value = item.Pprice;
+      document.getElementById('sellingP').value = item.Sprice;
+      
+      var itemCat;
+      if(item.category_id != null){
+         itemCat = item.category_id;
+      } else{
+        itemCat = 'None';
+      }
+      $("#category option[value='" + itemCat + "']").prop("selected", true);
+
+      $('#modalEdit').show();
+      $('#modalEdit' ).addClass('open' ); 
+        if ( $('#modalEdit' ).hasClass('open' ) ) {
+          $('.mainContainer' ).addClass('blur' );
+          $('.lightBackground1' ).addClass('blur' );
+          $('.lightBackground2' ).addClass('blur' );
+        }
+    });
 
     cancel.on('click', function(){
-      modal.hide();
-       $( '.modal' ).removeClass( 'open' );
+      modalAdd.hide();
+      modalEdit.hide();
+       $( '#modalAdd' ).removeClass( 'open' );
+       $( '#modalEdit' ).removeClass( 'open' );
        $( '.mainContainer' ).removeClass( 'blur' );
        $( '.lightBackground1' ).removeClass( 'blur' );
        $( '.lightBackground2' ).removeClass( 'blur' );

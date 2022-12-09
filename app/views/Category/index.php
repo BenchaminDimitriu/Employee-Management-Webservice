@@ -40,24 +40,26 @@
               </thead>
       
               <tbody>
+                <form id='catEdit' action="/Category/edit">
                 <?php
                   foreach($data['categorys'] as $item)
                   {
                     echo" 
                         <tr>
-                          <td><input style='border:none; text-align:center;' class='catName' value='$item->name' onfocusout='sendName($item->category_id)'></input></td>
+                          <td><input style='border:none; text-align:center;' class='catName' name='name' value='$item->name' onfocusout='editCat($item->category_id)'></input></td>
                           <td id='totalS'>$item->totalS</td>
                           <td>$item->totalP</td>
                           <td><button onclick='confirm($item->category_id)' class='btn btn-danger' id='dele teBut'>Delete</button></td>
                         </tr>
                       ";
                   }
-                ?>
+
+                ?></form>
               </tbody>
             </table>
           </div>
           
-          <p style="margin-left: 2%; color:rgba(163, 14, 14, 1);;">*Notice: Edit category by clicking the name*</p>
+          <p style="margin-left: 2%; color:rgba(163, 14, 14, 1);">*Notice: Edit category by clicking the name*</p>
         
         </div>
       </div>

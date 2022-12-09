@@ -19,16 +19,23 @@ class Item extends \app\core\Controller{
 	 	$lowStock = $item->getAllLow();
 
 	 	//Verify that the filter by date button is clicked 
-	 	if(isset($_POST['action'])){
+	 	if(isset($_POST['actionFilterDate'])){
 	 		//Verify that the input feilds are not empty, if so then get all of the modifications
 	 		if($_POST['year'] == "" || $_POST['month'] == "" ){
 	 			$summary = new \app\models\Summary();
 	 			$summary = $summary->getAll();
+				header('location:/Item/index?error=Please enter the year and date');
+				return;
 	 		} else{
 	 			//Gets the certain modifications based on the input feild values
 				$summary = new \app\models\Summary();
 				$summary = $summary->getFilter($_POST['month'], $_POST["year"]);
-				header('location:/Item/index?message=Hello World');
+				if($summary == null){
+					header('location:/Item/index?error=Nothing reported');
+					return;
+				} else{
+					header('location:/Item/index?message=Reports for ' . $_POST['month'] . '-' . $_POST['year']);
+				}
 			}
 	 	} else{
 	 		//Gets all of the modifications
@@ -78,107 +85,100 @@ class Item extends \app\core\Controller{
 		$item = new \app\models\Item();
 	 	$item = $item->get($item_id);
 
-	 	//Verifys that the edit button is clicked
-		if(isset($_POST['action'])){
-			//Verifys that the input feilds are not empty except for the quantity sold, quantity
-			//purchased and category
-			if($_POST['name'] == "" || $_POST['purchaseP'] == ""  || $_POST['sellingP'] == ""){
-				header('location:/Item/index?error=Please enter all info');
-			} else{
-				//Gets the category that the user selected
-				$category = new \app\models\Category();
-	 			$category = $category->get($_POST['category']);
-	 			
-	 			//Verfiy that the category selected is not null, if not then it sets the item category id 
-				if($category != null){
-					$item->category_id = $category->category_id;
-	 			}
-
-	 			//Sets the item name and the currrent selling price and purchase price
-				$item->item_name = $_POST['name'];
-				$item->Pprice = $_POST['purchaseP'];
-				$item->Sprice = $_POST['sellingP'];
-
-				//Checks if the quantity sold or quantity purchased has a value
-				if($_POST['qtyS'] != "" || $_POST['qtyP'] != ""){
-
-					//Creates a summary
-					$summary = new \app\models\Summary();
-
-					//Checks if the quantity sold has a value
-					if($_POST['qtyS'] != ''){
-
-						//Sets the amount to the string value of quantity sold input and it also sets
-						//the summary item name, discount and the rounded version of purchase price
-						$summary->amount = "- " . strval($_POST['qtyS']);
-						$summary->item_name = $_POST['name']; 
-						$summary->discount = $_POST['discount']; 
-						$summary->purchaseP = round($_POST['purchaseP'], 2);
-
-						//Checks if there is a discount to be added
-						if($_POST['discount'] != ""){
-							//Creates the discounted price off of the selling price of the item and
-							//sets the summary selling price
-							$discountedPrice = $_POST['sellingP'] * ($_POST['discount'] / 100);
-							$summary->sellingP = round($_POST['sellingP'] - $discountedPrice, 2); 
-						} else{
-							//Sets the summary price with no discount
-							$summary->sellingP = round($_POST['sellingP'], 2);
-						} 
-
-						//Sets the original selling price incase it is every changed for that item,
-						//it would not change for this summary, and it sets the user
-						$summary->originalSP = $_POST['sellingP'];
-						$summary->user = $_SESSION['username'];
-
-						//Checks if the quantity sold - the quantity purchased would make the item quantity less than //zero, if so then it just updates the item and not the quantity
-						if(($item->qty - ((int) $_POST['qtyS'] - (int) $_POST['qtyP'])) < 0){
-							$item->update();
-							header('location:/Item/index?error=Item quantity cannot be below zero');
-						} else{
-							//Creates the summary and updates the item with the item quantity
-							$summary->insert();
-							$item->qty = $item->qty - $_POST['qtyS'];
-							$item->update();
-							header('location:/Item/index?message=Item updated');
-						}
-					}
-
-					//Checks if the quantity purchased has a value 
-					if($_POST['qtyP'] != ''){
-						//Gets the values for the summary
-						$summary->amount = "+ " . strval($_POST['qtyP']);
-						$summary->discount = null; 
-						$summary->item_name = $_POST['name'];  
-						$summary->originalSP = $_POST['sellingP'];
-						$summary->sellingP = null;
-						$summary->purchaseP = $_POST['purchaseP']; 
-						$summary->user = $_SESSION['username'];
-
-						//Checks if the quantity sold - the quantity purchased would make the item quantity less than //zero and that the current quantity is not less then zero, if so then it just updates the //item and not the quantity
-						if(($item->qty - ((int) $_POST['qtyS'] - (int) $_POST['qtyP'])) < 0 && !($item->qty < 0)){
-							$item->update();
-							header('location:/Item/index?error=Item quantity cannot be below zero');
-						} else{
-							//Creates the summary and updates the item with the item quantity
-							$summary->insert();
-							$item->qty = $_POST['qtyP'] + $item->qty;
-							$item->update();
-							header('location:/Item/index?message=Item updated');
-						}
-					}
-				} else{
-					//Updates the item if there are no values for quantity sold or quantity purchased
-					$item->update();
-					header('location:/Item/index?message=Item updated');
-				}
-			}
+		//Verifys that the input feilds are not empty except for the quantity sold, quantity
+		//purchased and category
+		if($_POST['name'] == "" || $_POST['purchaseP'] == ""  || $_POST['sellingP'] == ""){
+			header('location:/Item/index?error=Please enter all info');
 		} else{
-	 		//Creates the view and populates it with the item and categorys
-		 	$categorys = new \app\models\Category();
-		 	$categorys = $categorys->getAll();
+			//Gets the category that the user selected
+			$category = new \app\models\Category();
+ 			$category = $category->get($_POST['category']);
+ 			
+ 			//Verfiy that the category selected is not null, if not then it sets the item category id 
+			if($category != null){
+				$item->category_id = $category->category_id;
+ 			} else{
+ 				$item->category_id = null;
+ 			}
 
-			$this->view('Item/edit', ['item'=>$item, 'categorys'=>$categorys]);
+ 			//Sets the item name and the currrent selling price and purchase price
+			$item->item_name = $_POST['name'];
+			$item->Pprice = $_POST['purchaseP'];
+			$item->Sprice = $_POST['sellingP'];
+
+			//Checks if the quantity sold or quantity purchased has a value
+			if($_POST['qtyS'] != "" || $_POST['qtyP'] != ""){
+
+				//Creates a summary
+				$summary = new \app\models\Summary();
+
+				//Checks if the quantity sold has a value
+				if($_POST['qtyS'] != ''){
+
+					//Sets the amount to the string value of quantity sold input and it also sets
+					//the summary item name, discount and the rounded version of purchase price
+					$summary->amount = "- " . strval($_POST['qtyS']);
+					$summary->item_name = $_POST['name']; 
+					$summary->discount = $_POST['discount']; 
+					$summary->purchaseP = round($_POST['purchaseP'], 2);
+
+					//Checks if there is a discount to be added
+					if($_POST['discount'] != ""){
+						//Creates the discounted price off of the selling price of the item and
+						//sets the summary selling price
+						$discountedPrice = $_POST['sellingP'] * ($_POST['discount'] / 100);
+						$summary->sellingP = round($_POST['sellingP'] - $discountedPrice, 2); 
+					} else{
+						//Sets the summary price with no discount
+						$summary->sellingP = round($_POST['sellingP'], 2);
+					} 
+
+					//Sets the original selling price incase it is every changed for that item,
+					//it would not change for this summary, and it sets the user
+					$summary->originalSP = $_POST['sellingP'];
+					$summary->user = $_SESSION['username'];
+
+					//Checks if the quantity sold - the quantity purchased would make the item quantity less than //zero, if so then it just updates the item and not the quantity
+					if(($item->qty - ((int) $_POST['qtyS'] - (int) $_POST['qtyP'])) < 0){
+						$item->update();
+						header('location:/Item/index?error=Item quantity cannot be below zero');
+					} else{
+						//Creates the summary and updates the item with the item quantity
+						$summary->insert();
+						$item->qty = $item->qty - $_POST['qtyS'];
+						$item->update();
+						header('location:/Item/index?message=Item updated');
+					}
+				}
+
+				//Checks if the quantity purchased has a value 
+				if($_POST['qtyP'] != ''){
+					//Gets the values for the summary
+					$summary->amount = "+ " . strval($_POST['qtyP']);
+					$summary->discount = null; 
+					$summary->item_name = $_POST['name'];  
+					$summary->originalSP = $_POST['sellingP'];
+					$summary->sellingP = null;
+					$summary->purchaseP = $_POST['purchaseP']; 
+					$summary->user = $_SESSION['username'];
+
+					//Checks if the quantity sold - the quantity purchased would make the item quantity less than //zero and that the current quantity is not less then zero, if so then it just updates the //item and not the quantity
+					if(($item->qty - ((int) $_POST['qtyS'] - (int) $_POST['qtyP'])) < 0 && !($item->qty < 0)){
+						$item->update();
+						header('location:/Item/index?error=Item quantity cannot be below zero');
+					} else{
+						//Creates the summary and updates the item with the item quantity
+						$summary->insert();
+						$item->qty = $_POST['qtyP'] + $item->qty;
+						$item->update();
+						header('location:/Item/index?message=Item updated');
+					}
+				}
+			} else{
+				//Updates the item if there are no values for quantity sold or quantity purchased
+				$item->update();
+				header('location:/Item/index?message=Item updated');
+			}
 		}
 	}
 
@@ -203,7 +203,7 @@ class Item extends \app\core\Controller{
 		
 		//Verify that the filter by date button is clicked, if so reload the page
 		//with the new selling summary
-		if(isset($_POST['action'])){
+		if(isset($_POST['actionFilterDate'])){
 			$this->index();
 		} else{
 			//If no filter is selected

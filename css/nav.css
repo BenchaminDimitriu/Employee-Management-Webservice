@@ -23,7 +23,7 @@
 }
 
 .notifB{
-  margin-top: 50px;
+  margin-top: 48px;
   color:white;
   height: 100px;
 }
@@ -51,13 +51,17 @@
 
 #username{
   color: white;
-  margin-right: 45%;
+}
+
+#catNav{
+  margin-left: 3%;
 }
 
 #imageLogoAd{
-  margin-left: 8%;
+  margin-left: 6%;
 }
 
 #imageLogoEmp{
-  margin-left: 3%;
+  margin-left: 1%;
+  margin-right: 4%;
 }
