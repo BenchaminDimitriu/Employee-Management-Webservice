@@ -46,15 +46,15 @@
                   {
                     echo" 
                         <tr>
-                          <td><input style='border:none; text-align:center;' class='catName' name='name' value='$item->name' onfocusout='editCat($item->category_id)'></input></td>
+                          <td><input style='border:none; text-align:center;' class='catName' name='category_id_$item->category_id' value='$item->name' onfocusout='editCat($item->category_id)'></input></form></td>
                           <td id='totalS'>$item->totalS</td>
                           <td>$item->totalP</td>
-                          <td><button onclick='confirm($item->category_id)' class='btn btn-danger' id='dele teBut'>Delete</button></td>
+                          <td><button onclick='confirm($item->category_id)' class='btn btn-danger' id='deleteBut'>Delete</button></td>
                         </tr>
                       ";
                   }
 
-                ?></form>
+                ?>
               </tbody>
             </table>
           </div>

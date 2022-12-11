@@ -56,9 +56,9 @@ class Category extends \app\core\Models{
 	//Used in the controller : gets the category based off of the name
 	public function getName($name){
 		//get all records from the owner table
-		$SQL = "SELECT * FROM category WHERE name LIKE '$name' ";
+		$SQL = "SELECT * FROM category WHERE name=:name";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute();//pass any data for the query
+		$STMT->execute(['name'=>$name]);//pass any data for the query
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, "app\\models\\Category");
 		return $STMT->fetch();
 	}

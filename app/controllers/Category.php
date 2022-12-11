@@ -47,21 +47,24 @@ class Category extends \app\core\Controller{
 	//Allows the user to edit the category
 	#[\app\filters\Login]
  	public function edit($category_id){
+
+ 		//Sets the name to the correct category_id
+ 		$name = $_POST['category_id_'.$category_id];
+
 		//Verify if the input feild is not empty
-		if($_POST['name'] == ''){
+		if($name == ''){
 			header('location:/Category/index?error=Category name cannot be blank');
 		} else{
 			//Verify that the name they typed is not already taken
 			$category = new \app\models\Category();
-			$category = $category->getName($_POST['name']);
-
+			$category = $category->getName($name);
 			if($category){
 				header('location:/Category/index?error=Category name already taken');
 			} else{
 				//Updates the category with the new name
 				$categoryName = new \app\models\Category();
 				$categoryName->category_id = $category_id;
-				$categoryName->name = $_POST['name'];
+				$categoryName->name = $name;
 				$categoryName->update();
 
 				header('location:/Category/index?message=Category was updated');
