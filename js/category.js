@@ -22,7 +22,8 @@ function modalPop(){
 };
 
 //To show modal, when user wants to delete
-function confirm(category_id) {
+function confirm(category_id, event) {
+  event.preventDefault();
   alertify.confirm("Delete Category", "Are you sure you want to delete?",
     function(input) {
       if (input) {
@@ -31,7 +32,7 @@ function confirm(category_id) {
         alertify.error('Cancel');
       }
     }, " ");
-};
+}
 
 //Used to edit the Category
 function editCat(category_id){
