@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2022 at 11:36 PM
+-- Generation Time: Dec 14, 2022 at 05:18 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -35,6 +35,15 @@ CREATE TABLE `category` (
   `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `name`) VALUES
+(84, 'Lotion'),
+(83, 'Oil'),
+(85, 'Soap');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +59,18 @@ CREATE TABLE `item` (
   `Sprice` float DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`item_id`, `item_name`, `qty`, `Pprice`, `Sprice`, `category_id`) VALUES
+(94, 'La neige', 2, 19.99, 34.99, 83),
+(95, 'Dove Ultra Soft', 8, 9.99, 29.99, 84),
+(96, 'AX body spray', 5, 14.99, 19.99, 85),
+(97, 'Crest White strips', 5, 12.99, 44.99, NULL),
+(98, 'Listerine', 21, 2.99, 6.99, NULL),
+(99, 'Harrys Body soap', 7, 5.99, 10.99, 85);
 
 -- --------------------------------------------------------
 
@@ -71,7 +92,11 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_id`, `first_name`, `last_name`, `address`) VALUES
-(57, 75, '(not specified)', '(not specified)', '(not specified)');
+(57, 75, '(not specified)', '(not specified)', '(not specified)'),
+(87, 106, 'Julien', 'Bernardo', '1250 rue patrick'),
+(88, 107, 'Johnathan', '(not specified)', '(not specified)'),
+(89, 108, '(not specified)', '(not specified)', '(not specified)'),
+(90, 109, '(not specified)', '(not specified)', '(not specified)');
 
 -- --------------------------------------------------------
 
@@ -92,6 +117,20 @@ CREATE TABLE `summary` (
   `originalSP` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `summary`
+--
+
+INSERT INTO `summary` (`summary_id`, `date`, `amount`, `discount`, `user`, `purchaseP`, `sellingP`, `item_name`, `originalSP`) VALUES
+(265, '2022-12-14', '+ 10', NULL, 'admin', 12.99, NULL, 'Crest White strips', 44.99),
+(266, '2022-12-14', '+ 6', NULL, 'admin', 2.99, NULL, 'Listerine', 6.99),
+(267, '2021-12-15', '- 7', 15, 'admin', 5.99, 9.34, 'Harrys Body soap', 10.99),
+(268, '2022-12-14', '- 3', 0, 'admin', 19.99, 34.99, 'La neige', 34.99),
+(269, '2022-12-14', '- 8', 10, 'admin', 12.99, 40.49, 'Crest White strips', 44.99),
+(270, '2021-11-14', '- 2', 5, 'Julien', 14.99, 18.99, 'AX body spray', 19.99),
+(271, '2022-12-14', '+ 5', NULL, 'Julien', 14.99, NULL, 'AX body spray', 19.99),
+(272, '2021-12-23', '- 4', 0, 'Johnathan', 14.99, 19.99, 'AX body spray', 19.99);
+
 -- --------------------------------------------------------
 
 --
@@ -111,7 +150,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `password_hash`, `role`) VALUES
-(75, 'admin', '$2y$10$OG8zc424qmRTVjeUuo17yOS3XNsKke5d4gzlFHNYAXc9S1L9cujKu', 'admin');
+(75, 'admin', '$2y$10$OG8zc424qmRTVjeUuo17yOS3XNsKke5d4gzlFHNYAXc9S1L9cujKu', 'admin'),
+(106, 'Julien', '$2y$10$K3VUlsiRRYQSmyDGwEG0JO9aN8qboUE0hrIHhG6I5.gOsTUeZ6tVK', 'employee'),
+(107, 'Johnathan', '$2y$10$ikoaPH/Sxep8bK7J1xawkOAWDwlX65dTedO4aCPAl43jG4CO5pWj.', 'employee'),
+(108, 'Fiacre', '$2y$10$lsZbj.jN.R05s2xhnbGCQ.Y2sPBYOpPnyrsAutd0Idk/JgBS9brz2', 'employee'),
+(109, 'Xiao', '$2y$10$s5mEcvs2kbwSL9Vl2pd2dOkkDHWg9LV5mwkfM1II29KV9suCDs9Hi', 'employee');
 
 --
 -- Indexes for dumped tables
@@ -159,31 +202,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `summary`
 --
 ALTER TABLE `summary`
-  MODIFY `summary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=265;
+  MODIFY `summary_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- Constraints for dumped tables
