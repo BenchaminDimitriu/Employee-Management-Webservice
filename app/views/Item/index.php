@@ -3,7 +3,7 @@
   <head>
     <!-- Imports -->
       <?php $this->view('header'); ?>
-  
+    
     <!-- Css -->
       <link rel="stylesheet" type="text/css" href="/css/Item/view.css" />
 

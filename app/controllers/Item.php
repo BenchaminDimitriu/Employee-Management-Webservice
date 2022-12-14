@@ -30,20 +30,22 @@ class Item extends \app\core\Controller{
 	 			//Gets the certain modifications based on the input feild values
 				$summary = new \app\models\Summary();
 				$summary = $summary->getFilter($_POST['month'], $_POST["year"]);
+
 				if($summary == null){
 					header('location:/Item/index?error=Nothing reported');
 					return;
 				} else{
-					header('location:/Item/index?message=Reports for ' . $_POST['month'] . '-' . $_POST['year']);
+					//header('location:/Item/index?message=Reports for ' . $_POST['month'] . '-' . $_POST['year']);
+					$this->view('Item/index', ['item'=>$items, 'categorys'=>$categorys, 'lowStock'=>$lowStock, 'summary'=>$summary]);
 				}
 			}
 	 	} else{
 	 		//Gets all of the modifications
 	 		$summary = new \app\models\Summary();
 	 		$summary = $summary->getAll();
-		}
 
-	 	$this->view('Item/index', ['item'=>$items, 'categorys'=>$categorys, 'lowStock'=>$lowStock, 'summary'=>$summary]);
+	 		$this->view('Item/index', ['item'=>$items, 'categorys'=>$categorys, 'lowStock'=>$lowStock, 'summary'=>$summary]);
+		}
 	}
 
 	//Allows user to add items
@@ -58,18 +60,20 @@ class Item extends \app\core\Controller{
 				//Gets the category that the user has selected
 				$category = new \app\models\Category();
 				$category = $category->get($_POST['category']);
-
-				//Verfiy that the category selected is not null, if not then it sets the item category id 
-				if($category != null){
-				$item->category_id = $category->category_id;
-				}
-
+			
 				//Creates the item
 				$item = new \app\models\Item();
 				$item->item_name = $_POST['name'];
 				$item->qty = $_POST['qty'];
 				$item->Pprice = $_POST['Pprice'];
 				$item->Sprice = $_POST['Sprice'];
+
+				//Verfiy that the category selected is not null, if not then it sets the item category id
+				if($category){
+					$item->category_id = $category->category_id;
+				} else{
+ 					$item->category_id = null;
+ 				}
 
 				$item->insert();
 				header('location:/Item/index?message=Item Created');
